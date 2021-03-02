@@ -1,0 +1,178 @@
+.main_div {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button_div_block {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;  
+}
+
+.div_button_ref {
+    width: 300px;
+}
+
+table {
+    border-collapse: separate; 
+    border-spacing: 10px;
+    margin: auto;
+    }
+	
+body {
+    font-family: Arial, sans-serif; 
+    font-size: 18px; 
+    margin: 5%;
+    } 
+    
+.reg {
+    text-align: center;
+}
+
+td {
+    height: 46px;
+    }
+
+.body_form {
+    text-align: right;
+    }
+
+input {
+    width: 260px; 
+    height: 28px;
+    }
+
+.button {
+    width: 160px; 
+    height: 42px; 
+    background-color: #fde941; 
+    border: 1px solid black; 
+    border-radius: 50px; 
+    font-size: 18px;
+    }
+    
+.button_secondary {
+    width: 160px; 
+    height: 42px; 
+    background-color: #ebebeb; 
+    border: 1px solid grey; 
+    border-radius: 50px; 
+    font-size: 18px;
+}
+
+h1 {
+    font-family: Arial, sans-serif; 
+    font-weight: bold; 
+    font-size: 21px; 
+    margin: 5%;
+    }    
+    
+.small_line {
+    border: none;
+    background-color: #c8c8c8;
+    height: 1px;
+    } 
+    
+.big_line  {
+    border: none;
+    background-color: black;
+    height: 4px;
+    }
+
+.thin_line  {
+    border: none;
+    background-color: #A0A0A0;
+    height: 1px;
+    }
+    
+.news_header {
+    font-size: 42px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600; 
+}
+
+.news_texts {
+    font-size: 19px;
+    font-family: "Book Antiqua", serif;
+    line-height: 1.6em;
+    margin-bottom: 19px;
+}
+
+.not_times {
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 200;
+    font-size: 21px;
+    margin-bottom: 10px;
+    line-height: 0.9em; 
+}
+
+.name_mag {
+    font-size: 72px;
+    font-family: "Times New Roman", serif;
+    text-align: center;
+    margin-top: 0px;
+    line-height: 0.9em;
+}
+
+h3 {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    margin: 6px;
+}
+
+.logout_ref {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 200;
+    font-size: 16px;
+    margin-top: 0px;
+    line-height: 0.9em;
+}
+
+.news_ref {
+    text-align: right;
+    font-family: "Book Antiqua", serif;
+    font-weight: 200;
+    font-size: 19px;
+    margin-top: 0px;
+    color: #A0A0A0;
+}
+
+.news_bold {
+    font-family: "Book Antiqua", serif;
+    font-size: 19px; 
+    font-weight: bold;
+    line-height: 1.6em;
+}
+
+.news_ref_edit {
+    text-align: left;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 0px;  
+}
+
+.news_ref_back {
+    text-align: right;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 0px;  
+}
+
+.section {
+    display: block;
+}
+
+.centered_button {
+    text-align: center;
+}
+
+.centered_secondary_button {
+    text-align: center;
+    margin-top: 16px;
+}

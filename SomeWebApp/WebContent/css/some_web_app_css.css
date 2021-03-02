@@ -1,0 +1,38 @@
+ul.local {
+	margin: 0;
+	padding: 0px;
+}
+
+ul.local li {
+	display: inline;
+	margin-right: 10px;
+}
+
+div.main-nav {
+	padding: 5px;
+}
+
+div.top-nav {
+	display: inline-block;
+  	width: 45%;
+  	margin: 0;
+  	padding: 0;
+}
+
+div.localization {
+	display: inline-block;
+  	width: 25%;
+  	margin: 0;
+  	padding: 0;
+}
+
+div.authorization{
+	display: inline-block;
+  	width: 70%;
+  	margin: 0;
+  	padding: 0;
+}
+
+div.main-nav {
+	clear: both;
+}
