@@ -44,7 +44,7 @@ public class GoToNewsPage implements Command{
 		NewsService newsService = provider.getNewsService();
 		
 		// TODO 
-		// ѕо id запрашивать только одну нужную новость
+		// ѕо id запрашивать только одну нужную новость.
 		try {
 			List<News> news = newsService.takeAll();
 			
