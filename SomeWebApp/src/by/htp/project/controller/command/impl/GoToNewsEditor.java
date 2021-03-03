@@ -19,7 +19,6 @@ public class GoToNewsEditor implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
 		
 		if (session == null) {
@@ -51,7 +50,6 @@ public class GoToNewsEditor implements Command {
 			}
 			
 		} catch(ServiceException e) {
-			// DON'T KNOW WHERE
 			response.sendRedirect("home?message=Something wrong with News Services");
 		}
 		

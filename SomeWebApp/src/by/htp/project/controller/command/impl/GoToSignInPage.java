@@ -13,11 +13,9 @@ public class GoToSignInPage implements Command{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/sign_in.jsp");
 		requestDispatcher.forward(request, response);
-		
 	}
 
 }

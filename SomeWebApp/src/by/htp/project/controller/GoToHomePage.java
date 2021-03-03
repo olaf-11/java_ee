@@ -37,8 +37,8 @@ public class GoToHomePage extends HttpServlet {
 			    dispatcher.forward(request, response);
 				
 			} catch (ServiceException e) {
-				// TODO ???
-				e.printStackTrace();
+				//
+				response.sendRedirect("home?message=Something wrong with News Services");
 			}
 
 	  }

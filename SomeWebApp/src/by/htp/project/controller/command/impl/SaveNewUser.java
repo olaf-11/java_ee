@@ -30,7 +30,6 @@ public class SaveNewUser implements Command{
 		try {
 			userService.registration(regInfo);			
 		} catch(ServiceException e) {
-			// DON"T KNOW WHERE
 			//System.out.println("Something happened");
 			response.sendRedirect("Controller?command=registration&message=Something wrong with User Services");
 			return;

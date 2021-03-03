@@ -13,7 +13,7 @@ public class Logout implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		HttpSession session = request.getSession();
 		
 		if (session != null) {
@@ -21,7 +21,6 @@ public class Logout implements Command {
 		}
 		
 		response.sendRedirect("home?message=logout ok");
-
 	}
 
 }

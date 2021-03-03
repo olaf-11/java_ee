@@ -34,8 +34,8 @@ public class GoToNewsPage implements Command{
 			return;
 		}
 		
-		//System.out.println(" === id === " + request.getParameter("id"));
-		
+		// TODO
+		// NumberFormatException - if the string does not contain aparsable integer.
 		int newsId = Integer.parseInt(request.getParameter("id"));
 		
 		//System.out.println(" === newsId === " + newsId);
@@ -43,6 +43,8 @@ public class GoToNewsPage implements Command{
 		ServiceProvider provider = ServiceProvider.getInstance();
 		NewsService newsService = provider.getNewsService();
 		
+		// TODO 
+		// ѕо id запрашивать только одну нужную новость
 		try {
 			List<News> news = newsService.takeAll();
 			
@@ -53,7 +55,6 @@ public class GoToNewsPage implements Command{
 			}
 			
 		} catch(ServiceException e) {
-			// DON"T KNOW WHERE
 			response.sendRedirect("home?message=Something wrong with News Services");
 		}
 		

@@ -45,7 +45,6 @@ public class SaveEditedNews implements Command{
 		try {
 			newsService.editNews(newsId, newsHeader, newsBrief, newsTexts);			
 		} catch(ServiceException e) {
-			// DON"T KNOW WHERE
 			response.sendRedirect("Controller?command=GoToUsersHomePage&message=Something wrong with News Services");
 			return;
 		}
