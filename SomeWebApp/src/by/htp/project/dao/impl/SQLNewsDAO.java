@@ -37,8 +37,9 @@ public class SQLNewsDAO implements NewsDAO {
 				String title = rs.getString("title");
 				String brief = rs.getString("brief");
 				String content = rs.getString("content");
+				String status = rs.getString("status");
 				
-				News n = new News(id, title, brief, content);
+				News n = new News(id, title, brief, content, status);
 				
 				news.add(n);
 				
@@ -47,7 +48,9 @@ public class SQLNewsDAO implements NewsDAO {
 			throw new DAOException(e);
 		} finally {
 			try {
-				con.close();
+				if(con != null) {
+					con.close();
+				}
 			} catch (SQLException e) {
 				throw new DAOException(e);
 			}
@@ -57,30 +60,70 @@ public class SQLNewsDAO implements NewsDAO {
 	}
 
 	@Override
-	public void updateNews(int newsId, String newsTitle, String newsBrief, String newsContent) throws DAOException {
-		// TODO
+	public void update(News news) throws DAOException {
+		
 		Connection con = null;
 		Statement st = null;
+		final String NEWS_UPDATE = "UPDATE news SET title='" + news.getTitle() + 
+								   "', brief='" + news.getBrief() + 
+								   "', content='" + news.getContent() +
+								   "', status='" + news.getStatus() +
+								   "' WHERE id=" + news.getId();
 		
 		try {
 			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/newsmanagement?useSSL=false&serverTimezone=UTC", "root", "mX26ql1Y");
 			
 			st = con.createStatement();
-			
-			final String NEWS_UPDATE = "UPDATE news SET title='" + newsTitle + "', brief='" + newsBrief + "', content='" + newsContent + "' WHERE id=" + newsId;
 			//System.out.println("NEWS_UPDATE —> " + NEWS_UPDATE);
-			//int col = st.executeUpdate(NEWS_UPDATE);
 			st.executeUpdate(NEWS_UPDATE);
 			
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		} finally {
 			try {
-				con.close();
+				if(con != null) {
+					con.close();
+				}
 			} catch (SQLException e) {
 				throw new DAOException(e);
 			}
 		}
+	}
+
+	@Override
+	public News getNewsById(int id) throws DAOException {
+		Connection con = null;
+		Statement st = null;
+		ResultSet rs = null;
+		News news = null;
+
+		try {
+			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/newsmanagement?useSSL=false&serverTimezone=UTC", "root", "mX26ql1Y");
+			
+			st = con.createStatement();
+			rs = st.executeQuery("SELECT * FROM news WHERE id=" + id);
+			
+			while(rs.next()) {
+				String title = rs.getString("title");
+				String brief = rs.getString("brief");
+				String content = rs.getString("content");
+				String status = rs.getString("status");
+				
+				news = new News(id, title, brief, content, status);
+			}
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		} finally {
+			try {
+				if(con != null) {
+					con.close();
+				}
+			} catch (SQLException e) {
+				throw new DAOException(e);
+			}
+		}
+
+		return news;
 	}
 
 }

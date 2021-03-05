@@ -2,6 +2,7 @@ package by.htp.project.controller.command.impl;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,11 +14,11 @@ import by.htp.project.service.NewsService;
 import by.htp.project.service.ServiceException;
 import by.htp.project.service.ServiceProvider;
 
-public class SaveEditedNews implements Command{
+public class GoToNewsReadPage implements Command{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		//
 		HttpSession session = request.getSession();
 		
 		if (session == null) {
@@ -31,29 +32,24 @@ public class SaveEditedNews implements Command{
 			response.sendRedirect("home_start_page?message=Authorization error");
 			return;
 		}
-		ServiceProvider provider = ServiceProvider.getInstance();
-		NewsService newsService = provider.getNewsService();
 		
 		// TODO
 		// NumberFormatException - if the string does not contain aparsable integer.
 		int id = Integer.parseInt(request.getParameter("news_id"));
-
-		News news = new News(id, request.getParameter("news_title"), 
-							 request.getParameter("news_brief"), 
-							 request.getParameter("news_content"),
-							 "edited");
-			
+		
+		ServiceProvider provider = ServiceProvider.getInstance();
+		NewsService newsService = provider.getNewsService();
+		
 		try {
-			newsService.editNews(news);		
+			News news = newsService.getNewsById(id);
+			request.setAttribute("news", news);			
 		} catch(ServiceException e) {
-			response.sendRedirect("Controller?command=GoToHomeUserPage&message=Something wrong with News Services");
-			return;
+			response.sendRedirect("home_start_page?message=Something wrong with News Services");
 		}
 		
-		
-		// Переходим на страницу с новостью
-		response.sendRedirect("Controller?command=GoToNewsReadPage&news_id=" + id);
-		
+				
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/news_read_page.jsp");
+		requestDispatcher.forward(request, response);		
 	}
 
 }

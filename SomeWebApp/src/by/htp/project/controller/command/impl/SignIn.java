@@ -38,10 +38,14 @@ public class SignIn implements Command{
 			
 			HttpSession session = request.getSession(true);
 			session.setAttribute("auth", true);
-			session.setAttribute("user", user.getLogin());
+			if (!user.getName().equals("")) {
+				session.setAttribute("user", user.getName());
+			} else {
+				session.setAttribute("user", user.getLogin());
+			}
 			session.setAttribute("role", user.getRole());
 			
-			response.sendRedirect("Controller?command=GoToUsersHomePage");
+			response.sendRedirect("Controller?command=GoToHomeUserPage");
 			
 		} catch(ServiceException e) {
 			response.sendRedirect("Controller?command=GoToSignInPage&message=Something wrong with User Services");

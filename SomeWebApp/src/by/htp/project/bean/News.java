@@ -8,15 +8,23 @@ public class News {
 	private String brief;
 	private String content;
 	private LocalDate date;
+	private String status;
 	
-	public News(int i, String ttl, String brf, String cnt) {
+	public News(int i, String ttl, String brf, String cnt, String st) {
 		super();
 		id = i;
 		title = ttl;
 		brief = brf;
 		content = cnt;
+		status = st;
 	}
 	
+	public News(String ttl, String brf, String cnt, String st) {
+		title = ttl;
+		brief = brf;
+		content = cnt;
+		status = st;
+	}
 
 	public News(int id, String title, String brief, String content, LocalDate date) {
 		super();
@@ -65,5 +73,13 @@ public class News {
 
 	public void setDate(LocalDate date) {
 		this.date = date;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }

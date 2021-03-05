@@ -1,5 +1,6 @@
 package by.htp.project.service.impl;
 
+import java.util.Iterator;
 import java.util.List;
 
 import by.htp.project.bean.News;
@@ -23,33 +24,76 @@ public class NewsServiceImpl implements NewsService {
 			throw new ServiceException(e);
 		}
 		
+		Iterator<News> newsIter = news.iterator();		
+		while (newsIter.hasNext()) {
+			if (newsIter.next().getStatus().toLowerCase().indexOf("deleted") > -1) {
+				newsIter.remove();
+			}
+		}
+
 		return news;
 	}
 
 	@Override
-	public void editNews(int newsId, String newsTitle, String newsBrief, String newsContent) throws ServiceException {
-		//
+	public boolean editNews(News news) throws ServiceException {
+		
+		boolean isEdited = false;
 		String[] apostrophe = {"\u0027", "\u0060", "\u2019", "'"};
+
+		//  ака€-то проблема с апострофами после окна редактировани€
 		for(String ap: apostrophe) {
-			newsTitle = newsTitle.replace(ap, "&apos;");
-			newsBrief = newsBrief.replace(ap, "&apos;");
-			newsContent = newsContent.replace(ap, "&apos;");
+			news.setTitle(news.getTitle().replace(ap, "&apos;"));
+			news.setBrief(news.getBrief().replace(ap, "&apos;"));
+			news.setContent(news.getContent().replace(ap, "&apos;"));
 		}
-		
-		//System.out.println("newsTitle Ч> " + newsTitle);
-		//System.out.println("newsBrief Ч> " + newsBrief);
-		//System.out.println("newsContent Ч> " + newsContent);
-		
-		
+
 		DAOProvider provider = DAOProvider.getInstance();
 		NewsDAO newsDAO = provider.getNewsDAO();
 	
 		try {
-			newsDAO.updateNews(newsId, newsTitle, newsBrief, newsContent);
+			newsDAO.update(news);
+			isEdited = true;
 		} catch (DAOException e) {
 			throw new ServiceException(e);
 			//System.out.println("Error");
 		}
+		
+		return isEdited;
+	}
+
+	@Override
+	public News getNewsById(int id) throws ServiceException {
+		
+		DAOProvider provider = DAOProvider.getInstance();
+		NewsDAO newsDAO = provider.getNewsDAO();
+		News news = null;
+		
+		try {
+			news = newsDAO.getNewsById(id);
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+		}
+		
+		return news;
+	}
+
+	@Override
+	public boolean deleteNewsById(int id) throws ServiceException {
+
+		boolean wasDeleted = false;
+		DAOProvider provider = DAOProvider.getInstance();
+		NewsDAO newsDAO = provider.getNewsDAO();
+	
+		try {
+			News news = newsDAO.getNewsById(id);
+			news.setStatus("deleted");
+			newsDAO.update(news);
+			wasDeleted = true;
+		} catch (DAOException e) {
+			throw new ServiceException(e);
+			//System.out.println("Error");
+		}
+		return wasDeleted;
 	}
 
 }

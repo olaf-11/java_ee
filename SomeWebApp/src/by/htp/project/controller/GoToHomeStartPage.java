@@ -14,10 +14,10 @@ import by.htp.project.service.NewsService;
 import by.htp.project.service.ServiceException;
 import by.htp.project.service.ServiceProvider;
 
-public class GoToHomePage extends HttpServlet {
+public class GoToHomeStartPage extends HttpServlet {
 	private static final long serialVersionUID = 4660100370487127005L;
 	
-	public GoToHomePage() {
+	public GoToHomeStartPage() {
 		super();
 	}
 	
@@ -33,12 +33,12 @@ public class GoToHomePage extends HttpServlet {
 				
 			    // Forward to /WEB-INF/views/home.jsp
 			    // (Users can not access directly into JSP pages placed in WEB-INF)
-				RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/home.jsp");			      
+				RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/jsp/home_start_page.jsp");			      
 			    dispatcher.forward(request, response);
 				
 			} catch (ServiceException e) {
 				//
-				response.sendRedirect("home?message=Something wrong with News Services");
+				response.sendRedirect("home_start_page?message=Something wrong with News Services");
 			}
 
 	  }

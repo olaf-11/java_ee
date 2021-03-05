@@ -1,34 +1,213 @@
-ul.local {
-	margin: 0;
-	padding: 0px;
+/*
+  ========================================
+  Reset styles
+  ========================================
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
-ul.local li {
-	display: inline;
+/*
+  ========================================
+  Users styles
+  ========================================
+*/
+body {
+  background: #fff;
+  color: #000;
+  font: 200 16px/22px "Open Sans", Helvetica, Arial, "Helvetica Neue", sans-serif;
+}
+section {
+	margin-top: 20px;
+}
+.news-editor {
+	margin-top: 10px;
+}
+
+
+
+
+/*
+  ========================================
+  Типографика
+  ========================================
+*/
+
+/* h1, h2, h3, h4 {
+  color: #648880;
+}*/
+/*h1, h2, h3, h4, h5, p {
+  margin-bottom: 22px;
+}*/
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 44px;
+}
+h3 {
+  font-size: 21px;
+}
+h4 {
+  font-size: 18px;
+}
+
+h5 {
+  /* color: #a9b2b9; */
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+strong {
+  font-weight: 400;
+}
+cite, em {
+  font-style: italic;
+}
+h2.news_title {
+	font-size: 36px;
+    font-family: "Book Antiqua", serif;
+    font-weight: 600;
+    margin-bottom: 19px;
+}
+p.news_content {
+	font-size: 19px;
+    font-family: "Book Antiqua", serif;
+    line-height: 1.6em;
+    margin-bottom: 19px;
+}
+
+/*
+  ========================================
+  Clearfix
+  ========================================
+*/
+
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  clear: both;
+  *zoom: 1;
+}
+
+.control-buttons-div {
+	float: left;
+	width: 19%;
+	/* background: #d0fe9e; */
+}
+.form-edit-news{
+	float: right;
+	width: 80%;
+	/* background: #cefff9; */
+}
+
+/*
+  ========================================
+  Навигация
+  ========================================
+*/
+
+.nav {
+  text-align: center;
+}
+.nav li {
+  display: inline-block;
+  margin: 0 5px;
+  vertical-align: top;
+}
+.nav li:last-child {
+  margin-right: 0;
+}
+.main-nav ul {
+	padding: 0;
+	margin-top: 22px;
 	margin-right: 10px;
 }
-
-div.main-nav {
-	padding: 5px;
+.service-nav ul {
+	text-align: right;
+}
+.delete-cancel-nav ul {
+	text-align: left;
+}
+.contol-edit-news-nav li {
+	display: block;
+	margin-top: 20px;
 }
 
-div.top-nav {
+.save-button-div {
+	text-align: left;
+}
+/*
+  ============================================================================
+*/
+
+
+div.header {
 	display: inline-block;
-  	width: 45%;
+  	width: 48%;
   	margin: 0;
   	padding: 0;
 }
 
-div.localization {
+div.local-div {
 	display: inline-block;
-  	width: 25%;
+  	width: 30%;
   	margin: 0;
   	padding: 0;
 }
 
-div.authorization{
+div.authorization-div{
 	display: inline-block;
-  	width: 70%;
+  	width: 68%;
   	margin: 0;
   	padding: 0;
 }

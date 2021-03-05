@@ -31,7 +31,7 @@ public class SaveNewUser implements Command{
 			userService.registration(regInfo);			
 		} catch(ServiceException e) {
 			//System.out.println("Something happened");
-			response.sendRedirect("Controller?command=registration&message=Something wrong with User Services");
+			response.sendRedirect("Controller?command=GoToRegisterPage&message=Something wrong with User Services");
 			return;
 		}
 
@@ -39,7 +39,7 @@ public class SaveNewUser implements Command{
 		//regInfo - show in console
 		//System.out.println("Something happened");
 		
-		response.sendRedirect("home?message=Registration OK");
+		response.sendRedirect("home_start_page?message=Registration OK");
 		
 		//request.setAttribute("message", "Registration OK");
 		

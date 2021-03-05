@@ -9,34 +9,40 @@
 <link rel="stylesheet" href="css/some_web_app_css.css">
 </head>
 <body>
-	<div class="top-nav logo">
- 		<img src="css/logo.png" alt="Logo">
-	</div>
+	<header>
+		<div class="header logo">
+ 			<img src="css/logo.png" alt="Logo">
+		</div>
 	
-	<div class="top-nav right-side-tn">
-		<div class="localization">
-			<ul class="local">
-				<li>EN</li>
-				<li>RU</li>
+		<div class="header service-nav">
+			<div class="local-div">
+				<nav class="nav local-nav">
+					<ul>
+						<li>EN</li>
+						<li>RU</li>
+					</ul>
+				</nav>
+			</div>
+			
+			<div class="authorization-div">
+				<nav class="nav authorization-nav">
+					<ul>
+						<li><a href="Controller?command=GoToSignInPage">Sign in</a></li>
+						<li><a href="Controller?command=GoToRegisterPage">Registration</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	
+		<nav class="nav main-nav">
+			<ul>
+ 				<li><a href="${pageContext.request.contextPath}/">Home</a></li>
+				<li><a href="${pageContext.request.contextPath}/Menu1">Menu1</a></li>
+				<li><a href="${pageContext.request.contextPath}/Menu2">Menu2</a></li>
+				<li><a href="${pageContext.request.contextPath}/Menu3">Menu3</a></li>
 			</ul>
-		</div>
-	
-		<div class="authorization">
-			<a href="Controller?command=GoToSignInPage">Sign in</a>
-			|
-			<a href="Controller?command=Registration">Registration</a>
-		</div>
-	</div>
-	
-	<div class="main-nav">
- 		<a href="${pageContext.request.contextPath}/">Home</a>
-		|
-		<a href="${pageContext.request.contextPath}/Menu1">Menu1</a>
-   		|
-		<a href="${pageContext.request.contextPath}/Menu2">Menu2</a>
-   		|
-		<a href="${pageContext.request.contextPath}/Menu3">Menu3</a>
-	</div>
+		</nav>
+	</header>
 	
 	<div class="error-messages">
 		<br>

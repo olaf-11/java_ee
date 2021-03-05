@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import by.htp.project.controller.command.Command;
 
-public class GoToRegistrationPage implements Command {
+public class GoToRegisterPage implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/registration.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register_page.jsp");
 		requestDispatcher.forward(request, response);		
 	}
 

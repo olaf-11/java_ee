@@ -3,17 +3,17 @@
   <display-name>SomeWebApp</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
-    <welcome-file>home</welcome-file>
+    <welcome-file>home_start_page</welcome-file>
   </welcome-file-list>
   
   <servlet>
-    <servlet-name>GoToHomePage</servlet-name>
-    <servlet-class>by.htp.project.controller.GoToHomePage</servlet-class>
+    <servlet-name>GoToHomeStartPage</servlet-name>
+    <servlet-class>by.htp.project.controller.GoToHomeStartPage</servlet-class>
   </servlet>
   
   <servlet-mapping>
-    <servlet-name>GoToHomePage</servlet-name>
-    <url-pattern>/home</url-pattern>
+    <servlet-name>GoToHomeStartPage</servlet-name>
+    <url-pattern>/home_start_page</url-pattern>
   </servlet-mapping>
 
   <servlet>

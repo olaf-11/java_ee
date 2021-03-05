@@ -14,7 +14,7 @@ public class GoToSignInPage implements Command{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/sign_in.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/sign_in_page.jsp");
 		requestDispatcher.forward(request, response);
 	}
 

@@ -43,7 +43,9 @@ public class SQLUserDAO implements UserDAO {
 			throw new DAOException(e);
 		} finally {
 			try {
-				con.close();
+				if(con != null) {
+					con.close();
+				}
 			} catch (SQLException e) {
 				throw new DAOException(e);
 			}
@@ -74,7 +76,9 @@ public class SQLUserDAO implements UserDAO {
 			throw new DAOException(e);
 		} finally {
 			try {
-				con.close();
+				if(con != null) {
+					con.close();
+				}
 			} catch (SQLException e) {
 				throw new DAOException(e);
 			}
@@ -109,7 +113,9 @@ public class SQLUserDAO implements UserDAO {
 			throw new DAOException(e);
 		} finally {
 			try {
-				con.close();
+				if(con != null) {
+					con.close();
+				}
 			} catch (SQLException e) {
 				throw new DAOException(e);
 			}
