@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.lang}" />
+<fmt:setBundle basename="by.htp.project.localization.lang" var="loc"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,8 +20,8 @@
 			<div class="local-div">
 				<nav class="nav local-nav">
 					<ul>
-						<li>EN</li>
-						<li>RU</li>
+						<li><a href="Controller?command=SetLang&lang=en&lastCommand=GoToRegisterPage">EN</a></li>
+						<li><a href="Controller?command=SetLang&lang=ru&lastCommand=GoToRegisterPage">RU</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -26,8 +29,8 @@
 			<div class="authorization-div">
 				<nav class="nav authorization-nav">
 					<ul>
-						<li><a href="Controller?command=GoToSignInPage">Sign in</a></li>
-						<li><a href="Controller?command=GoToRegisterPage">Registration</a></li>
+						<li><a href="Controller?command=GoToSignInPage"><fmt:message bundle="${loc}" key="home.start.nav.signin" /></a></li>
+						<li><a href="Controller?command=GoToRegisterPage"><fmt:message bundle="${loc}" key="home.start.nav.registration" /></a></li>
 					</ul>
 				</nav>
 			</div>
@@ -35,10 +38,10 @@
 	
 		<nav class="nav main-nav">
 			<ul>
- 				<li><a href="${pageContext.request.contextPath}/">Home</a></li>
-				<li><a href="${pageContext.request.contextPath}/Menu1">Menu1</a></li>
-				<li><a href="${pageContext.request.contextPath}/Menu2">Menu2</a></li>
-				<li><a href="${pageContext.request.contextPath}/Menu3">Menu3</a></li>
+ 				<li><a href="${pageContext.request.contextPath}/"><fmt:message bundle="${loc}" key="home.start.mainnav.home" /></a></li>
+				<li><a href="${pageContext.request.contextPath}/Menu1"><fmt:message bundle="${loc}" key="home.start.mainnav.menu1" /></a></li>
+				<li><a href="${pageContext.request.contextPath}/Menu2"><fmt:message bundle="${loc}" key="home.start.mainnav.menu2" /></a></li>
+				<li><a href="${pageContext.request.contextPath}/Menu3"><fmt:message bundle="${loc}" key="home.start.mainnav.menu3" /></a></li>
 			</ul>
 		</nav>
 	</header>
@@ -68,28 +71,28 @@
 			<input type="hidden" name="command" value="SaveNewUser" />
 			<table>
 				<tr>
-					<td class="body_form">Enter your e-mail (login):</td>
+					<td class="body_form"><fmt:message bundle="${loc}" key="register.email" />:</td>
 					<td><input type="text" name="login" value="" placeholder="alexanderIII@email.com" /></td>
 				</tr>
 				<tr>
-					<td class="body_form">Enter your password:</td>
+					<td class="body_form"><fmt:message bundle="${loc}" key="register.pwd" />:</td>
 					<td><input type="password" name="password" value="" placeholder="***********" /></td>
 				</tr>
 				<tr>
-					<td class="body_form">Enter your name:</td>
+					<td class="body_form"><fmt:message bundle="${loc}" key="register.name" />:</td>
 					<td><input type="text" name="name" value="" placeholder="Alexander III" /></td>
 				</tr>
 				<tr>
-					<td class="body_form">Enter your surname:</td>
+					<td class="body_form"><fmt:message bundle="${loc}" key="register.surname" />:</td>
 					<td><input type="text" name="surname" value="" placeholder="the Great" /></td>
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="checkbox" name="isRobot">Press checkbox if you are not a robocop.</td>
+					<td><input type="checkbox" name="isRobot"><fmt:message bundle="${loc}" key="register.checkbox.norobot" />.</td>
 				</tr>
 				<tr>
 					<td></td>
-					<td><input class="button" type="submit" value="Register"></td>
+					<td><input class="button" type="submit" value=<fmt:message bundle="${loc}" key="register.button.register" />></td>
 				</tr>
 			</table>
 		</form>

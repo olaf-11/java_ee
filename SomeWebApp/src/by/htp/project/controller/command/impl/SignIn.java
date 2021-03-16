@@ -2,6 +2,7 @@ package by.htp.project.controller.command.impl;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,7 +49,8 @@ public class SignIn implements Command{
 			response.sendRedirect("Controller?command=GoToHomeUserPage");
 			
 		} catch(ServiceException e) {
-			response.sendRedirect("Controller?command=GoToSignInPage&message=Something wrong with User Services");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error_page.jsp?message=Something wrong with User Services");			      
+		    dispatcher.forward(request, response);
 		}
 
 	}

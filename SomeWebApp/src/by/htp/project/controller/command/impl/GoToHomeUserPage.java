@@ -23,7 +23,7 @@ public class GoToHomeUserPage implements Command {
 		HttpSession session = request.getSession();
 		
 		if (session == null) {
-			response.sendRedirect("home_start_page?message=Session is out of time");
+			response.sendRedirect("Controller?command=GoToHomeStartPage&message=Session is out of time");
 			return;
 		}
 		
@@ -33,13 +33,13 @@ public class GoToHomeUserPage implements Command {
 			List<News> news = newsService.takeAll();	
 			request.setAttribute("news", news);
 		} catch(ServiceException e) {
-			response.sendRedirect("home_start_page?message=Something wrong with News Services");
+			response.sendRedirect("Controller?command=GoToHomeStartPage&message=Something wrong with News Services");
 		}
 		
 		Boolean isAuth = (Boolean)session.getAttribute("auth");
 		
 		if(isAuth == null || !isAuth) {
-			response.sendRedirect("home_start_page?message=Authorization error");
+			response.sendRedirect("Controller?command=GoToHomeStartPage&message=Authorization error");
 			return;
 		}
 		

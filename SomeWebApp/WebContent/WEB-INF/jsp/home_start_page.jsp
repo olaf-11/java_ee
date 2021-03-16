@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.lang}" /> 
+<fmt:setBundle basename="by.htp.project.localization.lang" var="loc"/>
 <!DOCTYPE html>
-<html>
+<html lang="${lang}">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -18,8 +21,8 @@
 			<div class="local-div">
 				<nav class="nav local-nav">
 					<ul>
-						<li>EN</li>
-						<li>RU</li>
+						<li><a href="Controller?command=SetLang&lang=en&lastCommand=GoToHomeStartPage">EN</a></li>
+						<li><a href="Controller?command=SetLang&lang=ru&lastCommand=GoToHomeStartPage">RU</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -27,8 +30,8 @@
 			<div class="authorization-div">
 				<nav class="nav authorization-nav">
 					<ul>
-						<li><a href="Controller?command=GoToSignInPage">Sign in</a></li>
-						<li><a href="Controller?command=GoToRegisterPage">Registration</a></li>
+						<li><a href="Controller?command=GoToSignInPage"><fmt:message bundle="${loc}" key="home.start.nav.signin" /></a></li>
+						<li><a href="Controller?command=GoToRegisterPage"><fmt:message bundle="${loc}" key="home.start.nav.registration" /></a></li>
 					</ul>
 				</nav>
 			</div>
@@ -36,10 +39,10 @@
 	
 		<nav class="nav main-nav">
 			<ul>
- 				<li><a href="${pageContext.request.contextPath}/">Home</a></li>
-				<li><a href="${pageContext.request.contextPath}/Menu1">Menu1</a></li>
-				<li><a href="${pageContext.request.contextPath}/Menu2">Menu2</a></li>
-				<li><a href="${pageContext.request.contextPath}/Menu3">Menu3</a></li>
+ 				<li><a href="${pageContext.request.contextPath}/"><fmt:message bundle="${loc}" key="home.start.mainnav.home" /></a></li>
+				<li><a href="${pageContext.request.contextPath}/Menu1"><fmt:message bundle="${loc}" key="home.start.mainnav.menu1" /></a></li>
+				<li><a href="${pageContext.request.contextPath}/Menu2"><fmt:message bundle="${loc}" key="home.start.mainnav.menu2" /></a></li>
+				<li><a href="${pageContext.request.contextPath}/Menu3"><fmt:message bundle="${loc}" key="home.start.mainnav.menu3" /></a></li>
 			</ul>
 		</nav>
 	</header>

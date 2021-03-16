@@ -21,14 +21,14 @@ public class SaveEditedNews implements Command{
 		HttpSession session = request.getSession();
 		
 		if (session == null) {
-			response.sendRedirect("home_start_page?message=Session is out of time");
+			response.sendRedirect("Controller?command=GoToHomeStartPage&message=Session is out of time");
 			return;
 		}
 		
 		Boolean isAuth = (Boolean)session.getAttribute("auth");
 		
 		if(isAuth == null || !isAuth) {
-			response.sendRedirect("home_start_page?message=Authorization error");
+			response.sendRedirect("Controller?command=GoToHomeStartPage&message=Authorization error");
 			return;
 		}
 		ServiceProvider provider = ServiceProvider.getInstance();

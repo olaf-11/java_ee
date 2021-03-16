@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="by.htp.project.bean.News"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale value="${sessionScope.lang}" />
+<fmt:setBundle basename="by.htp.project.localization.lang" var="loc"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +21,8 @@
 			<div class="local-div">
 				<nav class="nav local-nav">
 					<ul>
-						<li>EN</li>
-						<li>RU</li>
+						<li><a href="Controller?command=SetLang&lang=en&lastCommand=GoToNewsReadPage&news_id=${news.id}">EN</a></li>
+						<li><a href="Controller?command=SetLang&lang=ru&lastCommand=GoToNewsReadPage&news_id=${news.id}">RU</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -27,12 +30,12 @@
 		<div class="authorization-div">
 				<nav class="nav authorization-nav">
 					<ul>
-						<li>Hello, <c:out value="${sessionScope.user}" /> 
+						<li><fmt:message bundle="${loc}" key="home.user.hello" />, <c:out value="${sessionScope.user}" /> 
 							<c:if test="${sessionScope.role eq \"admin\"}">
-							(<c:out value="${sessionScope.role}" />)
+							(<fmt:message bundle="${loc}" key="home.user.admin" />)
 							</c:if>
 						</li>
-						<li><a href="Controller?command=logout">Logout</a></li>
+						<li><a href="Controller?command=logout"><fmt:message bundle="${loc}" key="home.user.logout" /></a></li>
 					</ul>
 				</nav>
 			</div>
@@ -40,10 +43,10 @@
 	
 		<nav class="nav main-nav">
 			<ul>
- 				<li><a href="Controller?command=GoToHomeUserPage">Home</a></li>
-				<li><a href="${pageContext.request.contextPath}/Menu1">Menu1</a></li>
-				<li><a href="${pageContext.request.contextPath}/Menu2">Menu2</a></li>
-				<li><a href="${pageContext.request.contextPath}/Menu3">Menu3</a></li>
+ 				<li><a href="Controller?command=GoToHomeUserPage"><fmt:message bundle="${loc}" key="home.start.mainnav.home" /></a></li>
+				<li><a href="${pageContext.request.contextPath}/Menu1"><fmt:message bundle="${loc}" key="home.start.mainnav.menu1" /></a></li>
+				<li><a href="${pageContext.request.contextPath}/Menu2"><fmt:message bundle="${loc}" key="home.start.mainnav.menu2" /></a></li>
+				<li><a href="${pageContext.request.contextPath}/Menu3"><fmt:message bundle="${loc}" key="home.start.mainnav.menu3" /></a></li>
 			</ul>
 		</nav>
 	</header>
@@ -62,9 +65,9 @@
 		<div class="button_div_block">
 			<nav class="nav backward-forward-nav">
 				<ul>
-					<li><a href="Controller?command=GoToHomeUserPage"> &lt;&lt;&lt; Back </a></li>
+					<li><a href="Controller?command=GoToHomeUserPage"> &lt;&lt;&lt; <fmt:message bundle="${loc}" key="home.user.back" /> </a></li>
 					<c:if test="${sessionScope.role eq \"admin\"}">
-						<li><a href="Controller?command=GoToNewsEditPage&news_id=${news.id}"> Edit news >>> </a></li>
+						<li><a href="Controller?command=GoToNewsEditPage&news_id=${news.id}"> <fmt:message bundle="${loc}" key="home.user.editnews" /> >>> </a></li>
 					</c:if>
 				</ul>
 			</nav>

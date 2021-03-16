@@ -1,6 +1,7 @@
 package by.htp.project.controller.command;
 
 public enum CommandName {
+	GOTOHOMESTARTPAGE,
 	GOTOREGISTERPAGE, 
 	SAVENEWUSER, 
 	LOGOUT, 
@@ -10,5 +11,6 @@ public enum CommandName {
 	GOTOSIGNINPAGE, 
 	SIGNIN, 
 	GOTOHOMEUSERPAGE, 
-	DELETENEWS
+	DELETENEWS,
+	SETLANG
 }
