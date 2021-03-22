@@ -12,6 +12,7 @@ public class RegistrationInfo {
 	}
 	
 	public RegistrationInfo(String l, String p, String n, String s) {
+		super();
 		login = l;
 		password = p;
 		name = n;
@@ -50,4 +51,36 @@ public class RegistrationInfo {
 		this.surname = surname;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((login == null) ? 0 : login.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		RegistrationInfo other = (RegistrationInfo) obj;
+		if (login == null) {
+			if (other.login != null)
+				return false;
+		} else if (!login.equals(other.login))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "RegistrationInfo login: " + login + "\n" + 
+			   "password: " + "***********" + "\n" +
+			   "name: " + name + "\n" +
+			   "surname: " + surname + "\n\n";
+	}	
 }

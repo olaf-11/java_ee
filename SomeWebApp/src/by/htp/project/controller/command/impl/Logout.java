@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import by.htp.project.constant.Message;
+import by.htp.project.constant.Path;
 import by.htp.project.controller.command.Command;
 
 public class Logout implements Command {
@@ -20,7 +22,7 @@ public class Logout implements Command {
 			session.removeAttribute("auth");
 		}
 		
-		response.sendRedirect("Controller?command=GoToHomeStartPage&message=Logout OK");
+		response.sendRedirect(Path.HOME_START_COMMAND + Message.LOGOUT_OK);		
 	}
 
 }

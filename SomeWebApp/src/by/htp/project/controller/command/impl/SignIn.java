@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import by.htp.project.bean.User;
+import by.htp.project.constant.Message;
+import by.htp.project.constant.Path;
+import by.htp.project.constant.Value;
 import by.htp.project.controller.command.Command;
 import by.htp.project.service.ServiceException;
 import by.htp.project.service.ServiceProvider;
@@ -33,23 +36,23 @@ public class SignIn implements Command{
 			user = userService.authorization(login, password);
 			
 			if(user == null) {
-				response.sendRedirect("Controller?command=GoToSignInPage&message=Login or password is wrong!");
+				response.sendRedirect(Path.SIGN_IN_COMMAND + Message.LOGINATION_ERR);
 				return;
 			}
 			
 			HttpSession session = request.getSession(true);
-			session.setAttribute("auth", true);
+			session.setAttribute(Value.AUTH_PARAM_NAME, true);
 			if (!user.getName().equals("")) {
-				session.setAttribute("user", user.getName());
+				session.setAttribute(Value.USER_PARAM_NAME, user.getName());
 			} else {
-				session.setAttribute("user", user.getLogin());
+				session.setAttribute(Value.USER_PARAM_NAME, user.getLogin());
 			}
 			session.setAttribute("role", user.getRole());
 			
-			response.sendRedirect("Controller?command=GoToHomeUserPage");
+			response.sendRedirect(Path.HOME_USER_SIMPLE_COMMAND);
 			
 		} catch(ServiceException e) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error_page.jsp?message=Something wrong with User Services");			      
+			RequestDispatcher dispatcher = request.getRequestDispatcher(Path.ERROR_URL + Message.USER_SERV_ERR);
 		    dispatcher.forward(request, response);
 		}
 

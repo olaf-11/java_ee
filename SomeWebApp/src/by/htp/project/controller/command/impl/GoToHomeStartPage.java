@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import by.htp.project.bean.News;
+import by.htp.project.constant.Message;
+import by.htp.project.constant.Path;
 import by.htp.project.controller.command.Command;
 import by.htp.project.service.NewsService;
 import by.htp.project.service.ServiceException;
@@ -28,11 +30,11 @@ public class GoToHomeStartPage implements Command {
 			
 		    // Forward to /WEB-INF/views/home.jsp
 		    // (Users can not access directly into JSP pages placed in WEB-INF)
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/home_start_page.jsp");			      
+			RequestDispatcher dispatcher = request.getRequestDispatcher(Path.HOME_START_URL);			      
 		    dispatcher.forward(request, response);
 				
 	 	} catch (ServiceException e) {
-	 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/error_page.jsp?message=Something wrong with News Services");			      
+	 		RequestDispatcher dispatcher = request.getRequestDispatcher(Path.ERROR_URL + Message.NEWS_SERV_ERR);
 		    dispatcher.forward(request, response);
 	 	}
 

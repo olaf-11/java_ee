@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import by.htp.project.bean.News;
+import by.htp.project.constant.Value;
 import by.htp.project.dao.DAOException;
 import by.htp.project.dao.NewsDAO;
 
@@ -26,10 +27,10 @@ public class SQLNewsDAO implements NewsDAO {
 
 		List<News> news = null;
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/newsmanagement?useSSL=false&serverTimezone=UTC", "root", "mX26ql1Y");
+			con = DriverManager.getConnection(Value.DB_CONNECT_URL, Value.DB_CONNECT_LOGIN, Value.DB_CONNECT_PWD);
 			
 			st = con.createStatement();
-			rs = st.executeQuery("SELECT * FROM news");
+			rs = st.executeQuery(Value.SQL_SELECT_ALL_NEWS);
 			
 			news = new ArrayList<News>();
 			while(rs.next()) {
@@ -71,7 +72,7 @@ public class SQLNewsDAO implements NewsDAO {
 								   "' WHERE id=" + news.getId();
 		
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/newsmanagement?useSSL=false&serverTimezone=UTC", "root", "mX26ql1Y");
+			con = DriverManager.getConnection(Value.DB_CONNECT_URL, Value.DB_CONNECT_LOGIN, Value.DB_CONNECT_PWD);
 			
 			st = con.createStatement();
 			//System.out.println("NEWS_UPDATE —> " + NEWS_UPDATE);
@@ -98,10 +99,10 @@ public class SQLNewsDAO implements NewsDAO {
 		News news = null;
 
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/newsmanagement?useSSL=false&serverTimezone=UTC", "root", "mX26ql1Y");
+			con = DriverManager.getConnection(Value.DB_CONNECT_URL, Value.DB_CONNECT_LOGIN, Value.DB_CONNECT_PWD);
 			
 			st = con.createStatement();
-			rs = st.executeQuery("SELECT * FROM news WHERE id=" + id);
+			rs = st.executeQuery(Value.SQL_SELECT_NEWS_BY_ID + id);
 			
 			while(rs.next()) {
 				String title = rs.getString("title");

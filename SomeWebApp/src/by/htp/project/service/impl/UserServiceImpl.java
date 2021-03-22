@@ -2,6 +2,7 @@ package by.htp.project.service.impl;
 
 import by.htp.project.bean.RegistrationInfo;
 import by.htp.project.bean.User;
+import by.htp.project.constant.Message;
 import by.htp.project.dao.DAOException;
 import by.htp.project.dao.DAOProvider;
 import by.htp.project.dao.UserDAO;
@@ -14,7 +15,7 @@ public class UserServiceImpl implements UserService {
 	public User authorization(String login, String password) throws ServiceException {
 		// validation
 		if(login == null || "".equals(login) ) {// to bo cont....
-			throw new ServiceException("Wrong login or password");
+			throw new ServiceException(Message.LOGINATION_ERR);
 		}
 		
 		DAOProvider provider = DAOProvider.getInstance();
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService {
 				//System.out.println(user.toString());
 			}
 		}catch(DAOException e) {
-			throw new ServiceException("error message", e);
+			throw new ServiceException(Message.USER_NOT_EXIST_ERR, e);
 		}
 		return user;
 	}
@@ -47,13 +48,13 @@ public class UserServiceImpl implements UserService {
         	//System.out.println("try-catch UserService.reg");
         	if(!userDAO.isUser(regInfo.getLogin())) {
         		user = new User(regInfo.getLogin(), regInfo.getPassword(), regInfo.getName(), regInfo.getSurname());
-        		System.out.println("login " + user.getLogin());
+        		//System.out.println("login " + user.getLogin());
         		//System.out.println();
         		isRegisterSuccess = userDAO.registration(user);
-        		System.out.println("isRegisterSuccess = " + isRegisterSuccess);
+        		//System.out.println("isRegisterSuccess = " + isRegisterSuccess);
         	}
 		}catch(DAOException e) {
-			throw new ServiceException("error message", e);
+			throw new ServiceException(Message.REGISTR_ERR, e);
 		}
         
         return isRegisterSuccess;

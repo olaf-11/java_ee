@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import by.htp.project.bean.User;
+import by.htp.project.constant.Value;
 import by.htp.project.dao.DAOException;
 import by.htp.project.dao.UserDAO;
 
@@ -26,16 +27,17 @@ public class SQLUserDAO implements UserDAO {
 		User user = null;
 		
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/newsmanagement?useSSL=false&serverTimezone=UTC", "root", "mX26ql1Y");
+			con = DriverManager.getConnection(Value.DB_CONNECT_URL, Value.DB_CONNECT_LOGIN, Value.DB_CONNECT_PWD);
 				
 			st = con.createStatement();
-			final String USER_QUARY = "SELECT * FROM users WHERE login='" + login + "'";
+			final String USER_QUARY = Value.SQL_SELECT_USER + "'" + login + "'";
 			//System.out.println("USER_QUARY —> " + USER_QUARY);	
 			rs = st.executeQuery(USER_QUARY);
 			
 			while(rs.next()) {
 				if (rs.getString("password").equals(password)) {
-					user = new User(rs.getString("login"), rs.getString("password"), rs.getString("name"), rs.getString("surname"), rs.getString("role"), rs.getString("status"));
+					user = new User(rs.getString("login"), rs.getString("password"), rs.getString("name"), 
+							        rs.getString("surname"), rs.getString("role"), rs.getString("status"));
 				}
 			}
 
@@ -62,12 +64,12 @@ public class SQLUserDAO implements UserDAO {
 		boolean isRegistered = false;
 			
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/newsmanagement?useSSL=false&serverTimezone=UTC", "root", "mX26ql1Y");
+			con = DriverManager.getConnection(Value.DB_CONNECT_URL, Value.DB_CONNECT_LOGIN, Value.DB_CONNECT_PWD);
 				
 			st = con.createStatement();
-			final String NEW_USER_CREATE_QUARY = "INSERT INTO users(login, password, name, surname, status, role) "
-						+ "VALUES('" + newUser.getLogin() + "','" + newUser.getPassword() + "','" + newUser.getName() + "','" 
-						+ newUser.getSurname() + "','" + newUser.getStatus() + "','" + newUser.getRole() + "')";
+			final String NEW_USER_CREATE_QUARY = Value.SQL_INSERT_USER + newUser.getLogin() + "','" 
+						+ newUser.getPassword() + "','" + newUser.getName() + "','" + newUser.getSurname() + "','" 
+						+ newUser.getStatus() + "','" + newUser.getRole() + "')";
 			//System.out.println("NEW_USER_ADD —> " + NEW_USER_CREATE_QUARY);	
 			st.executeUpdate(NEW_USER_CREATE_QUARY);
 			isRegistered = true;
@@ -98,10 +100,10 @@ public class SQLUserDAO implements UserDAO {
 		//System.out.println("In UserDAO isUser");
 		
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/newsmanagement?useSSL=false&serverTimezone=UTC", "root", "mX26ql1Y");
+			con = DriverManager.getConnection(Value.DB_CONNECT_URL, Value.DB_CONNECT_LOGIN, Value.DB_CONNECT_PWD);
 			
 			st = con.createStatement();
-			rs = st.executeQuery("SELECT login FROM users");
+			rs = st.executeQuery(Value.SQL_SELECT_ALL_LOGIN);
 			
 			loginsList = new ArrayList<String>();
 			while(rs.next()) {
