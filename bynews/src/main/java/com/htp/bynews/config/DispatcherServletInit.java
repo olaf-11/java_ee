@@ -6,8 +6,8 @@ public class DispatcherServletInit extends AbstractAnnotationConfigDispatcherSer
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		// TODO Hibernate factory config, Web Security config classes
-		return null;
+		// TODO WebAppConfig, Hibernate factory config, Web Security config classes
+		return new Class[] { BynewsConfig.class };
 	}
 
 	@Override
