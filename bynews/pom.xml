@@ -61,6 +61,14 @@
 		<version>5.4.31.Final</version>
 	</dependency>
 	
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm 
+	     for LocalSessionFactoryBean -->
+	<dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-orm</artifactId>
+    	<version>5.3.7</version>
+	</dependency>
+	
 	<dependency>
 		<groupId>mysql</groupId>
 		<artifactId>mysql-connector-java</artifactId>

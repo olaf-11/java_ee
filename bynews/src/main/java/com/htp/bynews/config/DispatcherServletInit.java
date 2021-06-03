@@ -6,14 +6,14 @@ public class DispatcherServletInit extends AbstractAnnotationConfigDispatcherSer
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		// TODO WebAppConfig, Hibernate factory config, Web Security config classes
+		// TODO ComponentScan Path, Hibernate factory config, Web Security config classes
 		return new Class[] { BynewsConfig.class };
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		// Web MVC config class
-		return new Class[] { AppWebMvcConfig.class };
+		return new Class[] { BynewsWebMvcConfig.class };
 	}
 
 	@Override

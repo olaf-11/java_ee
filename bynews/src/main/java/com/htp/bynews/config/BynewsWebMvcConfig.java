@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = {"com.htp.bynews.controller"})
-public class AppWebMvcConfig implements WebMvcConfigurer{
+public class BynewsWebMvcConfig implements WebMvcConfigurer{
 
 	@Override
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {

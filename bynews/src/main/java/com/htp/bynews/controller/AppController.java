@@ -19,8 +19,6 @@ import com.htp.bynews.service.ServiceException;
 public class AppController {
 	
 	@Autowired
-	//@Qualifier("newsSimpleService")
-	@Qualifier("newsMySqlService")
 	private NewsService newsService;
 	
 	@GetMapping("home")

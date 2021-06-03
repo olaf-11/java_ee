@@ -28,12 +28,12 @@ public class NewsMySqlService implements NewsService {
 			throw new ServiceException(exception);
 		}
 		
-		/*Iterator<News> newsIter = news.iterator();		
+		Iterator<News> newsIter = news.iterator();		
 		while (newsIter.hasNext()) {
 			if (newsIter.next().getStatus().toLowerCase().indexOf("deleted") > -1) {
 				newsIter.remove();
 			}
-		}*/
+		}
 
 		return news;
 	}
