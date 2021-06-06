@@ -1,16 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!-- <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
+<fmt:setLocale value="${sessionScope.lang}" />
+<fmt:setBundle basename="by.htp.project.localization.lang" var="loc"/> -->
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Root Page</title>
+<meta charset="UTF-8">
+<title>SignIn</title>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/bynews_css.css'/>" />
 </head>
 <body>
 	<header>
 		<div class="header logo">
- 			  <img src="<c:url value='/resources/img/bynews.png'/>" alt="Logo">
- 			  <!-- <img src="${pageContext.request.contextPath}/resources/img/logo.png" alt="Logo" /> -->  
+ 			<img src="<c:url value='/resources/img/bynews.png'/>" alt="Logo">
 		</div>
 	
 		<div class="header service-nav">
@@ -19,8 +24,8 @@
 					<ul>
 						<li>EN</li>
 						<li>RU</li>
-						<!-- <li><a href="Controller?command=SetLang&lang=en&lastCommand=GoToHomeStartPage">EN</a></li>
-						<li><a href="Controller?command=SetLang&lang=ru&lastCommand=GoToHomeStartPage">RU</a></li> -->
+						<!-- <li><a href="Controller?command=SetLang&lang=en&lastCommand=GoToRegisterPage">EN</a></li>
+						<li><a href="Controller?command=SetLang&lang=ru&lastCommand=GoToRegisterPage">RU</a></li> -->
 					</ul>
 				</nav>
 			</div>
@@ -43,7 +48,6 @@
 				<li>Menu1</li>
 				<li>Menu2</li>
 				<li>Menu3</li>
-				
  				<!-- <li><a href="${pageContext.request.contextPath}/"><fmt:message bundle="${loc}" key="home.start.mainnav.home" /></a></li>
 				<li><a href="${pageContext.request.contextPath}/Menu1"><fmt:message bundle="${loc}" key="home.start.mainnav.menu1" /></a></li>
 				<li><a href="${pageContext.request.contextPath}/Menu2"><fmt:message bundle="${loc}" key="home.start.mainnav.menu2" /></a></li>
@@ -54,7 +58,7 @@
 	
 	<div class="error-messages">
 		<br>
-			<c:if test="${not empty message}">
+		<c:if test="${not empty message}">
 			<h1>
 				<font color="red">${message}</font>
 			</h1>
@@ -64,16 +68,25 @@
 	</div>
 
 	<div class="body-div">
+		<hr>
+		<br>
+		<form:form action="login" modelAttribute="loginForm">
 
-		<c:if test="${not empty news}">
-			<c:forEach var="news" items="${news}">
-				<hr class="big_line">
-				<br />
-				<h2 class="news_title">${news.title}</h2>
-				<p class="news_content">${news.brief}</p>
-				<br />
-			</c:forEach>
-		</c:if>
+			<table>
+				<tr>
+					<td class="body_form">Enter login:</td>
+					<td><form:input path="login" placeholder="ivanov@mail.com" /></td>
+				</tr>
+				<tr>
+					<td class="body_form">Enter password:</td>
+					<td><form:password path="password" placeholder="***********" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input class="button" type="submit" value="Sign in" /></td>
+				</tr>
+			</table>
+		</form:form>
 	
 	</div>
 
