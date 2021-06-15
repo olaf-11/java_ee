@@ -48,7 +48,7 @@ public class NewsMySqlService implements NewsService {
 		for(String ap: apostrophe) {
 			news.setTitle(news.getTitle().replace(ap, "&apos;"));
 			news.setBrief(news.getBrief().replace(ap, "&apos;"));
-			news.setContent(news.getContent().replace(ap, "&apos;"));
+			news.setText(news.getText().replace(ap, "&apos;"));
 		}
 
 		try {

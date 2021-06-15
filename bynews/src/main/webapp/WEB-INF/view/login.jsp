@@ -75,7 +75,7 @@
 			<table>
 				<tr>
 					<td class="body_form">Enter login:</td>
-					<td><form:input path="login" placeholder="ivanov@mail.com" /></td>
+					<td><form:input path="username" placeholder="ivanov@mail.com" /></td>
 				</tr>
 				<tr>
 					<td class="body_form">Enter password:</td>

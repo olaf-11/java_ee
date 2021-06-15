@@ -13,11 +13,11 @@ public class BynewsSecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 			.csrf().disable()
 			.authorizeRequests()
-			.antMatchers("/", "/home", "/index", "/registration", "/resources/**").permitAll()
+			.antMatchers("/", "/home", "/login", "/index", "/registration", "/resources/**").permitAll()
 			.anyRequest().authenticated()
 			.and()
-			.formLogin().loginPage("/login").permitAll()
-			.defaultSuccessUrl("/home", true);
+			.formLogin().loginPage("/login2").permitAll()
+			.defaultSuccessUrl("/home_user_page", true);// TODO start_user_page ?
 	}
 	
 }

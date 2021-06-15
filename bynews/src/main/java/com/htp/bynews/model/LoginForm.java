@@ -2,17 +2,17 @@ package com.htp.bynews.model;
 
 public class LoginForm {
 	
-	private String login;
+	private String username;
 	private String password;
 	
 	public LoginForm(){}
 
-	public String getLogin() {
-		return login;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -27,7 +27,7 @@ public class LoginForm {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((login == null) ? 0 : login.hashCode());
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
 
@@ -40,17 +40,17 @@ public class LoginForm {
 		if (getClass() != obj.getClass())
 			return false;
 		LoginForm other = (LoginForm) obj;
-		if (login == null) {
-			if (other.login != null)
+		if (username == null) {
+			if (other.username != null)
 				return false;
-		} else if (!login.equals(other.login))
+		} else if (!username.equals(other.username))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "LoginForm [login= " + login + ", password= **********]";
+		return "LoginForm [username= " + username + ", password= **********]";
 	}
 
 }

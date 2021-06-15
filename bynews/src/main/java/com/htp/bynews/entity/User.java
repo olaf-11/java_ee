@@ -4,18 +4,24 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name="users")
+@Table(name="appusers")
 public class User implements Serializable{
 	private static final long serialVersionUID = 1759870238289196175L;
 	
 	@Id
-	@Column(name="login")
-	private String login;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id", nullable = false, updatable = false)
+	private int id;
+
+	@Column(name="email", unique = true, nullable = false)
+	private String email;
 	
 	@Column(name="password")
 	private String password;
@@ -23,45 +29,60 @@ public class User implements Serializable{
 	@Column(name="name")
 	private String name;
 	
-	@Column(name="surname")
-	private String surname;
-	
 	@Column(name="status")
 	private String status;
-	
-	@Column(name="role")
-	private String role;
 	
 	@Transient
 	private String pwdConfirm;
 	
+	//TODO Only for test! Delete this!
+	@Column(name="pwd_comment")
+	private String pwd_comment;
+	
 	public User() {}
 	
-	public User(String l, String p, String n, String s) {
-		login = l;
+	public User(String e, String p, String n) {
+		email = e;
 		password = p;
 		name = n;
-		surname = s;
-		role = "user";
 		status = "active";
-		
 	}
 	
-	public User(String l, String p, String n, String s, String r, String st) {
-		login = l;
+	public User(String e, String p, String n, String s, String st) {
+		email = e;
 		password = p;
 		name = n;
-		surname = s;
-		role = r;
 		status = st;
 	}
-
-	public String getLogin() {
-		return login;
+	
+	//TODO Only for test! Delete this!
+	public String getPwd_comment() {
+		return pwd_comment;
 	}
 
-	public void setLogin(String login) {
-		this.login = login;
+	//TODO Only for test! Delete this!
+	public void setPwd_comment(String pwd_comment) {
+		this.pwd_comment = pwd_comment;
+	}
+	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+		
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -80,14 +101,6 @@ public class User implements Serializable{
 		this.name = name;
 	}
 
-	public String getSurname() {
-		return surname;
-	}
-
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
-
 	public String getStatus() {
 		return status;
 	}
@@ -96,14 +109,6 @@ public class User implements Serializable{
 		this.status = status;
 	}
 
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-	
 	public String getPwdConfirm() {
 		return pwdConfirm;
 	}
@@ -116,7 +121,7 @@ public class User implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((login == null) ? 0 : login.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
@@ -130,10 +135,10 @@ public class User implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (login == null) {
-			if (other.login != null)
+		if (email == null) {
+			if (other.email != null)
 				return false;
-		} else if (!login.equals(other.login))
+		} else if (!email.equals(other.email))
 			return false;
 		if (status == null) {
 			if (other.status != null)
@@ -145,11 +150,9 @@ public class User implements Serializable{
 
 	@Override
 	public String toString() {
-		return "User login: " + login + "\n" +
+		return "User login: " + email + "\n" +
 			   "password: " + "**********" + "\n" +
 			   "name: " + name + "\n" +
-			   "surname: " + surname + "\n" +
-			   "status: " + status + "\n" +
-			   "role: " + role + "\n\n";
+			   "status: " + status + "\n";
 	}
 }

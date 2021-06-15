@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="news")
+@Table(name="appnews")
 public class News implements Serializable{
 	private static final long serialVersionUID = 4196969124256249593L;
  
@@ -26,24 +26,28 @@ public class News implements Serializable{
 	@Column(name="brief")
 	private String brief;
 	
-	@Column(name="content")
-	private String content;
+	@Column(name="text")
+	private String text;
+		
+	@Column(name="status")
+	private String status;
 	
 	@Column(name="date")
 	private Timestamp date;
 	
-	@Column(name="status")
-	private String status;
-	
 	public News() {}
 	
 	//TODO delete this. ONLY for test!
-	public News(String n_title, String n_brief, String n_content) {
+	public News(String n_title, String n_brief, String n_text) {
 		title = n_title;
 		brief = n_brief;
-		content = n_content;
+		text = n_text;
 	}
 	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -68,12 +72,12 @@ public class News implements Serializable{
 		this.brief = brief;
 	}
 
-	public String getContent() {
-		return content;
+	public String getText() {
+		return text;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setText(String text) {
+		this.text = text;
 	}
 
 	public Timestamp getDate() {
@@ -125,7 +129,7 @@ public class News implements Serializable{
 		return "News id = " + id + "\n" + 
 			   "title: " + title + "\n" +
 			   "brief: " + brief + "\n" +
-			   "content: " + content + "\n" +
+			   "text: " + text + "\n" +
 			   "date: " + date + "\n" +
 			   "status = " + status + "\n\n";
 	}	
