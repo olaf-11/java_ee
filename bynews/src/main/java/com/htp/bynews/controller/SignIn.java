@@ -8,13 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 //import org.springframework.web.bind.annotation.PostMapping;
 //import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-//import com.htp.bynews.constant.Message;
-//import com.htp.bynews.entity.AppUser;
-import com.htp.bynews.model.LoginForm;
-//import com.htp.bynews.service.AnyTypeUserService;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RequestMethod;
-//import com.htp.bynews.service.ServiceException;
+import com.htp.bynews.bean.LoginForm;
 
 @Controller
 //@RequestMapping("/login")
@@ -24,7 +18,7 @@ public class SignIn {
 	//AnyTypeUserService anyTypeUserService;
 	
 	@GetMapping("/login")
-	public String ShowSignInPage(Model model) {
+	public String showSignInPage(Model model) {
 		
 		// create a loginForm object
 		LoginForm loginForm = new LoginForm();
@@ -34,6 +28,14 @@ public class SignIn {
 		
 		return "login";
 	}
+	
+	/*
+	@GetMapping("/login?error")
+	public String showErrorOnSignIn (Model model) {
+		//
+		model.addAttribute("error", "Wrong username or password.");
+		return "login";
+	} */
 	/*
 	@PostMapping("/login")
 	//@RequestMapping(value = "/login", method = RequestMethod.POST)

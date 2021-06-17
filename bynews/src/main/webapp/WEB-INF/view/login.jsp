@@ -58,11 +58,17 @@
 	
 	<div class="error-messages">
 		<br>
-		<c:if test="${not empty message}">
-			<h1>
-				<font color="red">${message}</font>
-			</h1>
-			</c:if>
+		<%
+			String error = (String)request.getParameter("error");
+			if(error != null){
+	    	
+		%>
+		<h2><font color="red">
+		<%
+			out.write("Wrong login or password.");
+		    }
+		%>
+		</font></h2>
 	
 		<br />
 	</div>
@@ -75,11 +81,11 @@
 			<table>
 				<tr>
 					<td class="body_form">Enter login:</td>
-					<td><form:input path="username" placeholder="ivanov@mail.com" /></td>
+					<td><form:input path="email" placeholder="ivanov@mail.com" /></td>
 				</tr>
 				<tr>
 					<td class="body_form">Enter password:</td>
-					<td><form:password path="password" placeholder="***********" /></td>
+					<td><form:password path="pswd" placeholder="***********" /></td>
 				</tr>
 				<tr>
 					<td></td>

@@ -1,5 +1,7 @@
 package com.htp.bynews.dao;
 
+import javax.persistence.NoResultException;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +17,13 @@ public class UserDaoMySql implements UserDao{
 	private SessionFactory sessionFactory;
 
 	@Override
-	public AppUser findUserByEmail(String email) {
+	public AppUser findUserByEmail(String email) throws DaoException {
 		
+		AppUser appUser = null;
 		//Session currentSession = sessionFactory.getCurrentSession();
-		System.out.println("\n email (from findUserByEmail): " + email + "\n");
-		//try { 
-			AppUser appUser = (AppUser) sessionFactory.getCurrentSession()
+		//System.out.println("\n email (from findUserByEmail): " + email + "\n");
+		try { 
+			appUser = (AppUser) sessionFactory.getCurrentSession()
 					.createQuery("select u " +
 								 "from AppUser u " +
 								 "where u.email like :email")
@@ -28,9 +31,9 @@ public class UserDaoMySql implements UserDao{
 					.getSingleResult();
 		
 			//System.out.println("status = " + status + "     (UserDao.isUserEntity())\n");
-		//} catch (NoResultException exc) {
-		//	return false;
-		//}
+		} catch (NoResultException exc) {
+			throw new DaoException(exc);
+		}
 		
 		return appUser;
 		

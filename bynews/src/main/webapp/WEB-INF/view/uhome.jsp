@@ -29,7 +29,7 @@
 				<nav class="nav authorization-nav">
 					<ul>
 						<li>Hello, ${username}</li>
-						<li><a href="/logout">Logout</a></li>
+						<li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -37,7 +37,7 @@
 	
 		<nav class="nav main-nav">
 			<ul>
-				<li><a href="${pageContext.request.contextPath}/">Home</a></li>
+				<li><a href="${pageContext.request.contextPath}/uhome">Home</a></li>
 				<li>Menu1</li>
 				<li>Menu2</li>
 				<li>Menu3</li>
