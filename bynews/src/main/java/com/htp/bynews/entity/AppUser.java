@@ -1,18 +1,23 @@
 package com.htp.bynews.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
 @Table(name="appusers")
-public class User implements Serializable{
+public class AppUser implements Serializable {
 	private static final long serialVersionUID = 1759870238289196175L;
 	
 	@Id
@@ -39,16 +44,22 @@ public class User implements Serializable{
 	@Column(name="pwd_comment")
 	private String pwd_comment;
 	
-	public User() {}
+	@ManyToMany
+	@JoinTable(name = "users_roles", 
+			   joinColumns = @JoinColumn (name = "appusers_id"),
+			   inverseJoinColumns = @JoinColumn (name = "roles_id"))
+	private List<Role> role;
 	
-	public User(String e, String p, String n) {
+	public AppUser() {}
+	
+	public AppUser(String e, String p, String n) {
 		email = e;
 		password = p;
 		name = n;
 		status = "active";
 	}
 	
-	public User(String e, String p, String n, String s, String st) {
+	public AppUser(String e, String p, String n, String s, String st) {
 		email = e;
 		password = p;
 		name = n;
@@ -116,6 +127,25 @@ public class User implements Serializable{
 	public void setPwdConfirm(String pwdConfirm) {
 		this.pwdConfirm = pwdConfirm;
 	}
+	
+	public void setRole(List<Role> role) {
+		this.role = role;
+	}
+	
+	public List<Role> getRole() {
+		return role;
+	}
+	
+	// add a convenience method
+	//TODO Delete this!
+	public void addRole (Role theRole) {
+	
+		if (role == null) {
+			role = new ArrayList<Role>();
+		}
+		
+		role.add(theRole);
+	}
 
 	@Override
 	public int hashCode() {
@@ -134,7 +164,7 @@ public class User implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		AppUser other = (AppUser) obj;
 		if (email == null) {
 			if (other.email != null)
 				return false;
@@ -153,6 +183,7 @@ public class User implements Serializable{
 		return "User login: " + email + "\n" +
 			   "password: " + "**********" + "\n" +
 			   "name: " + name + "\n" +
+			   "role: " + role + "\n" +
 			   "status: " + status + "\n";
 	}
 }

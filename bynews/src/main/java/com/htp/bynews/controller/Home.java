@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+//import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.htp.bynews.constant.Message;
@@ -22,9 +22,10 @@ public class Home {
 	private NewsService newsService;
 	
 	@GetMapping("home")
-	public String home(Model model, @ModelAttribute("message_redirect") String message_redir) {
+	public String home(Model model) {
+	//public String home(Model model, @ModelAttribute("message_redirect") String message_redir) {
 		
-		System.out.println("\nMessage from redirect --> " + message_redir + "\n");
+		//System.out.println("\nMessage from redirect --> " + message_redir + "\n");
 		
 		try {
 			// get customers from the service
@@ -32,7 +33,7 @@ public class Home {
 						
 			// add the customers to the model
 			model.addAttribute("news", news);
-			model.addAttribute("message", message_redir);
+			//model.addAttribute("message", message_redir);
 		
 		} catch (ServiceException exception) {
 			// message

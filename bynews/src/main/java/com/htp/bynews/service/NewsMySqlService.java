@@ -19,6 +19,7 @@ public class NewsMySqlService implements NewsService {
 	private NewsDao newsDao;
 
 	@Transactional
+	@Override
 	public List<News> takeAll() throws ServiceException {
 		
 		List<News> news;
@@ -39,6 +40,7 @@ public class NewsMySqlService implements NewsService {
 	}
 
 	@Transactional
+	@Override
 	public boolean editNews(News news) throws ServiceException {
 		
 		boolean isEdited = false;
@@ -63,6 +65,7 @@ public class NewsMySqlService implements NewsService {
 	}
 
 	@Transactional
+	@Override
 	public News getNewsById(int id) throws ServiceException {
 		
 		News news = null;
@@ -77,6 +80,7 @@ public class NewsMySqlService implements NewsService {
 	}
 
 	@Transactional
+	@Override
 	public boolean deleteNewsById(int id) throws ServiceException {
 
 		boolean wasDeleted = false;
