@@ -12,5 +12,6 @@ public class Message {
 	public static final String REG_OK_PARAM = "Registration OK";
 	public static final String LOGOUT_OK = "Logout OK";
 	public static final String NEWS_DEL_SUCCESS = "News was deleted successfully";
+	public static final String NEWS_WASNT_ADDED = "The news wasn't addded";
 	
 }

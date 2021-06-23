@@ -19,7 +19,7 @@ public class NewsMySqlDao implements NewsDao {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public List<News> all() throws DaoException {
+	public List<News> getAll() throws DaoException {
 
 		// get the current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
@@ -48,9 +48,12 @@ public class NewsMySqlDao implements NewsDao {
 		// get current hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
 		
+		// set current date & time
+		news.setDate(new java.sql.Timestamp(new java.util.Date().getTime()));
+		
 		try {
 			
-			// save/upate the customer
+			// save/update the news
 			currentSession.saveOrUpdate(news);
 			
 		} catch (QueryException e) {
@@ -76,6 +79,34 @@ public class NewsMySqlDao implements NewsDao {
 		}
 		
 		return news;
+	}
+
+	@Override
+	public int insertNews(News news) throws DaoException {
+		
+		int id = -1;
+		// get current hibernate session
+		Session currentSession = sessionFactory.getCurrentSession();
+				
+		// set current date & time
+		news.setDate(new java.sql.Timestamp(new java.util.Date().getTime()));
+		news.setStatus("active");
+		
+		//System.out.println("\n... from Nes DAO...");
+		//System.out.println("NEWS\n" + news);
+		
+		try {
+				
+			// save/update the news
+			currentSession.saveOrUpdate(news);
+			
+		} catch (QueryException e) {
+			throw new DaoException(e);
+		}
+		//System.out.println("\nID of added News = " + news.getId() + "\n");
+		//System.out.println("id = " + id);
+		id = news.getId();
+		return id;
 	}
 
 }

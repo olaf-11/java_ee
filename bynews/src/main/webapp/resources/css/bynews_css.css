@@ -43,8 +43,8 @@ q:before, q:after {
   content: none;
 }
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+  border-collapse: separate;
+  border-spacing: 0px;
 }
 
 /*
@@ -63,10 +63,19 @@ body {
 section {
 	margin-top: 20px;
 }
+
 .news-editor {
 	margin-top: 10px;
 }
 
+.container {
+ text-align: center;
+}
+
+.inside_sign {
+	display: inline-block;
+	text-align: left;
+}
 
 
 
@@ -119,6 +128,13 @@ h2.news_title {
 p.news_content {
 	font-size: 19px;
     font-family: "Book Antiqua", serif;
+    line-height: 1.6em;
+    margin-bottom: 19px;
+}
+h4.news_brief {
+    font-family: "Book Antiqua", serif;
+    font-size: 19px; 
+    font-weight: bold;
     line-height: 1.6em;
     margin-bottom: 19px;
 }
@@ -217,4 +233,29 @@ div.authorization-div{
 
 div.main-nav {
 	clear: both;
+}
+/*
+  ========================================
+  Tables
+  ========================================
+*/
+table.table_signin {
+	margin-top: 40px;
+}
+td {
+	padding: 10px;
+	padding-left: 0px;
+}
+div.table_td input {
+	height: 30px;
+	width: 200px;
+}
+/*
+  ========================================
+  Buttons
+  ========================================
+*/
+input.button {
+	width: 100px;
+	height: 34px;
 }

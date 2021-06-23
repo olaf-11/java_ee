@@ -6,7 +6,7 @@
 </head>
 <body>
 	<%
-		response.sendRedirect("home");
+		response.sendRedirect("start");
 	%>
 </body>
 </html>

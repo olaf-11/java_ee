@@ -12,7 +12,7 @@ import com.htp.bynews.dao.NewsDao;
 import com.htp.bynews.entity.News;
 
 @Service
-public class NewsMySqlService implements NewsService {
+public class NewsServiceMySql implements NewsService {
 	
 	// need to inject customer dao
 	@Autowired
@@ -24,7 +24,7 @@ public class NewsMySqlService implements NewsService {
 		
 		List<News> news;
 		try {
-			news = newsDao.all();
+			news = newsDao.getAll();
 		} catch (DaoException exception) {
 			throw new ServiceException(exception);
 		}
@@ -46,7 +46,7 @@ public class NewsMySqlService implements NewsService {
 		boolean isEdited = false;
 		String[] apostrophe = {"\u0027", "\u0060", "\u2019", "'"};
 
-		// Какая-то проблема с апострофами после окна редактирования
+		// There is some problems with apostrophes after edit page
 		for(String ap: apostrophe) {
 			news.setTitle(news.getTitle().replace(ap, "&apos;"));
 			news.setBrief(news.getBrief().replace(ap, "&apos;"));
@@ -58,7 +58,6 @@ public class NewsMySqlService implements NewsService {
 			isEdited = true;
 		} catch (DaoException exception) {
 			throw new ServiceException(exception);
-			//System.out.println("Error");
 		}
 		
 		return isEdited;
@@ -66,7 +65,7 @@ public class NewsMySqlService implements NewsService {
 
 	@Transactional
 	@Override
-	public News getNewsById(int id) throws ServiceException {
+	public News takeNewsById(int id) throws ServiceException {
 		
 		News news = null;
 		
@@ -92,9 +91,23 @@ public class NewsMySqlService implements NewsService {
 			wasDeleted = true;
 		} catch (DaoException exception) {
 			throw new ServiceException(exception);
-			//System.out.println("Error");
 		}
 		return wasDeleted;
 	}
+
+	@Transactional
+	@Override
+	public int addNews(News news) throws ServiceException {
+		int id = -1;
+		
+		try {
+			id = newsDao.insertNews(news);
+		} catch (DaoException exception) {
+			throw new ServiceException(exception);
+		}
+		
+		return id;
+	}
+	
 
 }

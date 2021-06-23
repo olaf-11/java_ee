@@ -2,7 +2,6 @@ package com.htp.bynews.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -26,18 +25,18 @@ public class BynewsSecurityConfig extends WebSecurityConfigurerAdapter{
 				.authorizeRequests()
 				.antMatchers( "/login", "/index", "/logout", 
 						     "/registration", "/resources/**").permitAll()
-				.antMatchers("/", "/home").anonymous()
+				.antMatchers("/", "/start").anonymous()
 				//.antMatchers("/uhome").hasRole("ADMIN")
 				.anyRequest().authenticated()
 			.and().formLogin()
 				.loginPage("/login")
 				.passwordParameter("pswd")
 				.usernameParameter("email")
-				.defaultSuccessUrl("/uhome", true)
+				.defaultSuccessUrl("/home", true)
 				.failureUrl("/login?error").permitAll()
 			.and().logout()
 				.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-				.logoutSuccessUrl("/home")
+				.logoutSuccessUrl("/start")
 				.clearAuthentication(true)
 				.invalidateHttpSession(true)
 				.deleteCookies("JSESSIONID");
@@ -49,10 +48,8 @@ public class BynewsSecurityConfig extends WebSecurityConfigurerAdapter{
 	}
 
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {		
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-		
 	}
-	
+
 }

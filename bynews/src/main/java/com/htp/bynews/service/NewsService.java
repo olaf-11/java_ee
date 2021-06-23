@@ -8,7 +8,8 @@ public interface NewsService {
 	
 	List<News> takeAll() throws ServiceException;
 	boolean editNews(News news) throws ServiceException;
-	News getNewsById(int id) throws ServiceException;
+	News takeNewsById(int id) throws ServiceException;
 	boolean deleteNewsById(int id) throws ServiceException;
+	int addNews(News news) throws ServiceException;
 	
 }

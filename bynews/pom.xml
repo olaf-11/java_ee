@@ -113,6 +113,14 @@
     	<artifactId>spring-security-config</artifactId>
     	<version>5.5.0</version>
 	</dependency>
+	
+	<!-- spring-security-taglibs for JSP-->
+	<dependency>
+   		<groupId>org.springframework.security</groupId>
+    	<artifactId>spring-security-taglibs</artifactId>
+    	<version>5.5.0</version>
+	</dependency>
+
 
 	</dependencies>
   

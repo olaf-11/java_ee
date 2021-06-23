@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"      uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec"    uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %> 
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,8 +18,8 @@
 			<div class="local-div">
 				<nav class="nav local-nav">
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/home?lang=en">EN</a></li>
-						<li><a href="${pageContext.request.contextPath}/home?lang=ru">RU</a></li>
+						<li><a href="${pageContext.request.contextPath}/news/read/${news.id}?lang=en">EN</a></li>
+						<li><a href="${pageContext.request.contextPath}/news/read/${news.id}?lang=ru">RU</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -27,7 +27,7 @@
 			<div class="authorization-div">
 				<nav class="nav authorization-nav">
 					<ul>
-						<li><spring:message code="home.user.hello" />, <sec:authentication property="name"/></li>
+						<li><sec:authentication property="name"/></li>
 						<li><a href="${pageContext.request.contextPath}/logout"><spring:message code="home.user.logout" /></a></li>
 					</ul>
 				</nav>
@@ -60,21 +60,30 @@
 
 	<div class="body-div">
 
-		<c:if test="${not empty news}">
-			<c:forEach var="news" items="${news}">
-				<hr class="big_line">
-				<br />
-				<h2 class="news_title">${news.title}</h2>
-				<p class="news_content">${news.brief}</p>
-				<p class="news_ref">
-					<a href="${pageContext.request.contextPath}/news/read/${news.id}"><spring:message code="home.user.more" /> >>></a>
-				</p>
-				<br />
-			</c:forEach>
-		</c:if>
 		<br />
+		<h2 class="news_title">${news.title}</h2>
+		<h4 class="news_brief">${news.brief}</h4>
+		
+		${news.text}
+		
+		<hr class="thin_line">
 		<br />
-	</div>
 
+		<div class="button_div_block">
+			<nav class="nav backward-forward-nav">
+				<ul>
+					<li><a href="${pageContext.request.contextPath}/home"> &lt;&lt;&lt; <spring:message code="home.user.back" /> </a></li>
+					
+					<sec:authorize access="hasAuthority('NEWS_EDIT')">
+						<li><a href="${pageContext.request.contextPath}/news/edit/${news.id}"> <spring:message code="home.user.editnews" /> >>> </a></li>
+					</sec:authorize>
+
+				</ul>
+			</nav>
+		</div>
+	
+	</div>
+	<br />
+	<br />
 </body>
 </html>

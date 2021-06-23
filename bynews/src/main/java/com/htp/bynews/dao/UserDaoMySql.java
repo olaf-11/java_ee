@@ -36,7 +36,6 @@ public class UserDaoMySql implements UserDao{
 		}
 		
 		return appUser;
-		
 	}
 
 }
