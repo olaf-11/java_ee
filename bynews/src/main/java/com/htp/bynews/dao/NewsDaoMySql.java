@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.htp.bynews.entity.News;
 
 @Repository
-public class NewsMySqlDao implements NewsDao {
+public class NewsDaoMySql implements NewsDao {
 	
 	// need to inject the session factory
 	@Autowired

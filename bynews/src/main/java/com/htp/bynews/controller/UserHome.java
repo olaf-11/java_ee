@@ -34,12 +34,10 @@ public class UserHome {
 			// add the customers to the model
 			model.addAttribute("news", news);
 			//model.addAttribute("message", message_redir);
-		
+			
 		} catch (ServiceException exception) {
-			// message
 			model.addAttribute("message", Message.NEWS_SERV_ERR);
 		}
-
 		return "/home";
 	}
 

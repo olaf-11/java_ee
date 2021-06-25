@@ -48,12 +48,11 @@
 	</header>
 	
 	<div class="error-messages">
-		<br>
+		<br />
 			<c:if test="${not empty message}">
-			<h1>
-				<font color="red">${message}</font>
-			</h1>
-			</c:if>
+			<br />
+			<h4 class="centered_error-msg">${message}</h4>
+		</c:if>
 	
 		<br />
 	</div>

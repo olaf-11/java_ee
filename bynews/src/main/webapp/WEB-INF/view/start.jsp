@@ -11,7 +11,6 @@
 	<header>
 		<div class="header logo">
  			  <img src="<c:url value='/resources/img/bynews.png'/>" alt="Logo">
- 			  <!-- <img src="${pageContext.request.contextPath}/resources/img/logo.png" alt="Logo" /> -->  
 		</div>
 	
 		<div class="header service-nav">
@@ -20,8 +19,6 @@
 					<ul>
 						<li><a href="<%=request.getContextPath()%>?lang=en">EN</a></li>
 						<li><a href="<%=request.getContextPath()%>?lang=ru">RU</a></li>
-						<!-- <li><a href="Controller?command=SetLang&lang=en&lastCommand=GoToHomeStartPage">EN</a></li>
-						<li><a href="Controller?command=SetLang&lang=ru&lastCommand=GoToHomeStartPage">RU</a></li> -->
 					</ul>
 				</nav>
 			</div>
@@ -30,11 +27,7 @@
 				<nav class="nav authorization-nav">
 					<ul>
 						<li><a href="${pageContext.request.contextPath}/login"><spring:message code="home.start.nav.signin" /></a></li>
-						<li><a href="${pageContext.request.contextPath}/registration"><spring:message code="home.start.nav.registration" /></a></li>
-						<!-- <li><a href="${pageContext.request.contextPath}/login">Sign in</a></li>
-						<li><a href="${pageContext.request.contextPath}/registration">Registration</a></li>
-						<li><a href="Controller?command=GoToSignInPage"><fmt:message bundle="${loc}" key="home.start.nav.signin" /></a></li>
-						<li><a href="Controller?command=GoToRegisterPage"><fmt:message bundle="${loc}" key="home.start.nav.registration" /></a></li> -->
+						<li><a href="${pageContext.request.contextPath}/signup"><spring:message code="home.start.nav.registration" /></a></li>
 					</ul>
 				</nav>
 			</div>
@@ -46,25 +39,16 @@
 				<li><spring:message code="home.start.mainnav.menu1" /></li>
 				<li><spring:message code="home.start.mainnav.menu2" /></li>
 				<li><spring:message code="home.start.mainnav.menu3" /></li>
-				<!-- <li><a href="${pageContext.request.contextPath}/">Home</a></li>
-				<li>Menu1</li>
-				<li>Menu2</li>
-				<li>Menu3</li>
-				
- 				<li><a href="${pageContext.request.contextPath}/"><fmt:message bundle="${loc}" key="home.start.mainnav.home" /></a></li>
-				<li><a href="${pageContext.request.contextPath}/Menu1"><fmt:message bundle="${loc}" key="home.start.mainnav.menu1" /></a></li>
-				<li><a href="${pageContext.request.contextPath}/Menu2"><fmt:message bundle="${loc}" key="home.start.mainnav.menu2" /></a></li>
-				<li><a href="${pageContext.request.contextPath}/Menu3"><fmt:message bundle="${loc}" key="home.start.mainnav.menu3" /></a></li> -->
 			</ul>
 		</nav>
 	</header>
 	
 	<div class="error-messages">
-		<br>
+		<br />
+		
 			<c:if test="${not empty message}">
-			<h1>
-				<font color="red">${message}</font>
-			</h1>
+				<br />
+				<h4 class="error-msg_start">${message}</h4>
 			</c:if>
 	
 		<br />

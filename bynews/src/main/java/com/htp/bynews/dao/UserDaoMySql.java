@@ -10,14 +10,14 @@ import org.springframework.stereotype.Repository;
 import com.htp.bynews.entity.AppUser;
 
 @Repository
-public class UserDaoMySql implements UserDao{
+public class UserDaoMySql implements UserDao {
 	
 	// need to inject the session factory
 	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
-	public AppUser findUserByEmail(String email) throws DaoException {
+	public AppUser findUserByEmail(String email) {
 		
 		AppUser appUser = null;
 		//Session currentSession = sessionFactory.getCurrentSession();
@@ -32,7 +32,7 @@ public class UserDaoMySql implements UserDao{
 		
 			//System.out.println("status = " + status + "     (UserDao.isUserEntity())\n");
 		} catch (NoResultException exc) {
-			throw new DaoException(exc);
+			return appUser;
 		}
 		
 		return appUser;

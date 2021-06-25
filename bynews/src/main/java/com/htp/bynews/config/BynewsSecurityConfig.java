@@ -24,7 +24,7 @@ public class BynewsSecurityConfig extends WebSecurityConfigurerAdapter{
 				.csrf().disable()
 				.authorizeRequests()
 				.antMatchers( "/login", "/index", "/logout", 
-						     "/registration", "/resources/**").permitAll()
+						     "/signup", "/resources/**").permitAll()
 				.antMatchers("/", "/start").anonymous()
 				//.antMatchers("/uhome").hasRole("ADMIN")
 				.anyRequest().authenticated()

@@ -50,9 +50,8 @@
 	<div class="error-messages">
 		<br>
 			<c:if test="${not empty message}">
-			<h1>
-				<font color="red">${message}</font>
-			</h1>
+				<br />
+				<h4 class="error-msg_home">${message}</h4>
 			</c:if>
 	
 		<br />

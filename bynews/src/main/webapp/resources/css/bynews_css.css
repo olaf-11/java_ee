@@ -107,7 +107,6 @@ h4 {
 }
 
 h5 {
-  /* color: #a9b2b9; */
   font-size: 14px;
   font-weight: 400;
   text-transform: uppercase;
@@ -137,6 +136,22 @@ h4.news_brief {
     font-weight: bold;
     line-height: 1.6em;
     margin-bottom: 19px;
+}
+.centered_error-msg {
+	text-align: center;
+	font-weight: bold;
+	color: #E84BD8; /* Light Magenta */
+}
+.error-messages {
+	font-weight: bold;
+	color: #E84BD8; /* Light Magenta */
+}
+p.hint_text {
+	text-align: center;
+	font-family: "Open Sans", Helvetica, Arial, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #E84BD8; /* gray */
 }
 
 /*
@@ -239,8 +254,8 @@ div.main-nav {
   Tables
   ========================================
 */
-table.table_signin {
-	margin-top: 40px;
+table.table_formn {
+	margin-top: 30px;
 }
 td {
 	padding: 10px;
@@ -248,7 +263,9 @@ td {
 }
 div.table_td input {
 	height: 30px;
-	width: 200px;
+	width: 300px;
+	font-family: "Open Sans", Helvetica, Arial, "Helvetica Neue", sans-serif;
+    font-size: 14px;
 }
 /*
   ========================================
@@ -256,6 +273,14 @@ div.table_td input {
   ========================================
 */
 input.button {
-	width: 100px;
-	height: 34px;
+	padding: 10px 25px;
+	
+	background-color: #C22DB3; /* Light Magenta #E84BD8; Dark magenta #A33598*/
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    /*display: inline-block;*/
+    font-family: "Open Sans", Helvetica, Arial, "Helvetica Neue", sans-serif;
+    font-size: 16px;    
 }

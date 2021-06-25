@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SignIn</title>
+<title>Register</title>
 <link rel="stylesheet" type="text/css" href="<c:url value='/resources/css/bynews_css.css'/>" />
 </head>
 <body>
@@ -20,8 +20,8 @@
 			<div class="local-div">
 				<nav class="nav local-nav">
 					<ul>
-						<li><a href="${pageContext.request.contextPath}/login?lang=en">EN</a></li>
-						<li><a href="${pageContext.request.contextPath}/login?lang=ru">RU</a></li>
+						<li><a href="${pageContext.request.contextPath}/signup?lang=en">EN</a></li>
+						<li><a href="${pageContext.request.contextPath}/signup?lang=ru">RU</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -46,58 +46,69 @@
 		</nav>
 	</header>
 	
-	<br>
-	<hr>
-	
-	<div class="error-messages">
-		<br />
-		
-		<% String error = (String)request.getParameter("error");
-			if(error != null){ %>
-		
-		<br />	
-		<h4 class="centered_error-msg">
-		
-		<% out.write("Wrong login or password.");
-		    } %>
-		
-		</h4>
-	
-		<br />
-	</div>
+	<br />
+	<hr />
+	<br />
+	<br />
 
 	<div class="body-div">
 		<div class="container">
 			<div class="inside_sign">
-				<form:form action="login" modelAttribute="loginForm">
 
-					<table class="table_signin table_form">
+				<form:form action="${pageContext.request.contextPath}/signup" modelAttribute="appUser">
+					<table class="table_register table_form">
 						<tr>
+							<td><div class="table_td"><spring:message code="register.email" />:</div></td>
 							<td>
-								<div class="table_td"><spring:message code="signin.login" /></div>
-							</td>
-							<td>
-								<div class="table_td"><form:input path="email" placeholder="peter.ivanov@gmail.com" /></div>
+								<div class="table_td"><form:input path="email" placeholder="Alexander_III@gmail.com" /></div>
 							</td>
 						</tr>
 						<tr>
+							<td><div class="table_td"><spring:message code="register.pwd" />:</div></td>
 							<td>
-								<div class="table_td"><spring:message code="signin.pwd" /></div>
+								<div class="table_td"><form:password path="password" placeholder="***********" /></div>
 							</td>
+						</tr>
+						<tr>
+							<td><div class="table_td"><spring:message code="register.pwdConfirm" />:</div></td>
 							<td>
-								<div class="table_td"><form:password path="pswd" placeholder="***********" /></div>
+								<div class="table_td"><form:password path="pwdConfirm" placeholder="***********" /></div>
+							</td>
+						</tr>
+						<tr>
+							<td><div class="table_td"><spring:message code="register.name" />:</div></td>
+							<td>
+								<div class="table_td"><form:input path="name" placeholder="Alexander_III" /></div>
 							</td>
 						</tr>
 						<tr>
 							<td></td>
 							<td>
-								<div><input class="button" type="submit" value=<spring:message code="signin.signin" /> /></div>
+								<div><input class="button" type="submit" value=<spring:message code="register.button.register" /> /></div>
 							</td>
 						</tr>
 					</table>
 				</form:form>
+				
 			</div>
 		</div>
+	</div>
+	
+	<div class="error_messages">
+		<br />
+		<c:if test="${not empty message}">
+			<br />
+			<h4 class="centered_error-msg">${message}</h4>
+		</c:if>
+	</div>
+	
+	<div class="hints_signup">
+		<c:if test="${not empty hints}">
+			<c:forEach var="hint" items="${hints}">
+				<br />
+				<p class="hint_text">(!) ${hint}</p>
+			</c:forEach>
+		</c:if>
 	</div>
 
 </body>
