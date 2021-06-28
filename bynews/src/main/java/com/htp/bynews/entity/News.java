@@ -37,7 +37,6 @@ public class News implements Serializable{
 	
 	public News() {}
 	
-	//TODO delete this. ONLY for test!
 	public News(String n_title, String n_brief, String n_text) {
 		title = n_title;
 		brief = n_brief;

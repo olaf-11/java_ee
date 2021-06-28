@@ -36,21 +36,9 @@ public class BynewsUserDetailsService implements UserDetailsService{
 			throw new UsernameNotFoundException(String.format("User '%s' not found", email));
 		} else {
 			Role userRole = appUser.getRole().get(0);
-			/* 
-			return User.builder()
-					   .username(appUser.getEmail())
-					   .password(appUser.getPassword())
-
-					   .authorities(permissionsToAuthorities(userRole))
-					   .disabled(isUserDisabled(appUser.getStatus()))
-					   .credentialsExpired(false)
-					   .accountExpired(false)
-					   .accountLocked(false)
-				       .build(); */
 			details = User.builder()
 			   .username(appUser.getEmail())
 			   .password(appUser.getPassword())
-			   //.roles(userRole.getRoleName().toUpperCase())
 			   .authorities(permissionsToAuthorities(userRole))
 			   .disabled(isUserDisabled(appUser.getStatus()))
 			   .credentialsExpired(false)
@@ -58,14 +46,6 @@ public class BynewsUserDetailsService implements UserDetailsService{
 			   .accountLocked(false)
 		       .build();
 		}
-		/*
-		System.out.println("UserRole: " + appUser.getRole().get(0).getRoleName());//userRole.getRoleName()
-		System.out.println("----------------------------------------------------------------------------------------------");
-		System.out.println("\n\nUserDetail (from BynewsUserDetailsService):");
-		System.out.println("" + details.getUsername());//getUsername()
-		System.out.println("" + details.getPassword());
-		System.out.println("" + details.getAuthorities().toString());//  getAuthorities()
-		*/
 		return details; 		
 	}
 	

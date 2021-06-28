@@ -22,13 +22,8 @@ public class UserHome {
 	public String uhome(Model model) {
 		
 		try {
-			// get customers from the service
 			List<News> news = newsService.takeAll();
-						
-			// add the customers to the model
 			model.addAttribute("news", news);
-			//model.addAttribute("message", message_redir);
-			
 		} catch (ServiceException exception) {
 			model.addAttribute("message", Message.NEWS_SERV_ERR);
 		}

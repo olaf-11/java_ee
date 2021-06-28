@@ -26,7 +26,6 @@ public class BynewsSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers( "/login", "/index", "/logout", 
 						     "/signup", "/resources/**").permitAll()
 				.antMatchers("/", "/start").anonymous()
-				//.antMatchers("/uhome").hasRole("ADMIN")
 				.anyRequest().authenticated()
 			.and().formLogin()
 				.loginPage("/login")

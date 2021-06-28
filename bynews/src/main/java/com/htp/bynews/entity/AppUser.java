@@ -42,7 +42,7 @@ public class AppUser implements Serializable {
 	@Transient
 	private String pwdConfirm;
 	
-	//TODO Only for test! Delete this!
+	// Only for test! Delete this!
 	@Column(name="pwd_comment")
 	private String pwd_comment;
 	
@@ -70,12 +70,12 @@ public class AppUser implements Serializable {
 		status = st;
 	}
 	
-	//TODO Only for test! Delete this!
+	// Only for test! Delete this!
 	public String getPwd_comment() {
 		return pwd_comment;
 	}
 
-	//TODO Only for test! Delete this!
+	// Only for test! Delete this!
 	public void setPwd_comment(String pwd_comment) {
 		this.pwd_comment = pwd_comment;
 	}
@@ -138,17 +138,6 @@ public class AppUser implements Serializable {
 	
 	public List<Role> getRole() {
 		return role;
-	}
-	
-	// add a convenience method
-	//TODO Delete this!
-	public void addRole (Role theRole) {
-	
-		if (role == null) {
-			role = new ArrayList<Role>();
-		}
-		
-		role.add(theRole);
 	}
 
 	@Override

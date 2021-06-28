@@ -29,24 +29,19 @@ public class UserControl {
 	@GetMapping("/login")
 	public String showSignInPage(Model model, 
 								@ModelAttribute("redir_msg") String redir_msg) {
-				
-		
+
 		if (redir_msg != null && !redir_msg.trim().isEmpty()) {
 			model.addAttribute("message", redir_msg);
 		}
-		
-		// add loginForm object to the model
+
 		model.addAttribute("loginForm", new LoginForm());
-		
 		return "login";
 	}
 	
 	@GetMapping("/signup")
 	public String showSignUpPage(Model model) {
-				
-		// add appUser object to the model
+
 		model.addAttribute("appUser", new AppUser());
-		
 		return "sign_up";
 	}
 	
@@ -83,7 +78,7 @@ public class UserControl {
 			return "sign_up";
 		}
 		
-		// 
+		// try to save new user in DB
 		try {
 			userService.registerNewUser(appUser);
 		} catch (ServiceException serviceExc) {
@@ -94,43 +89,9 @@ public class UserControl {
 			return "sign_up";
 		}
 		
-		// TODO a.o.k.
+		// if all OK
 		redirectAttr.addFlashAttribute("redir_msg", Message.REG_OK_PARAM);
 		return "redirect:/login";
 	}
-	
-	/*
-	@GetMapping("/login?error")
-	public String showErrorOnSignIn (Model model) {
-		//
-		model.addAttribute("error", "Wrong username or password.");
-		return "login";
-	} */
-	/*
-	@PostMapping("/login")
-	//@RequestMapping(value = "/login", method = RequestMethod.POST)
-	//public String processSignIn(@ModelAttribute("loginForm") LoginForm loginForm, Model model) {
-	public String processSignIn(Model model, @ModelAttribute("loginForm") LoginForm loginForm, RedirectAttributes redirectAttr) {
-		
-		// log the input data
-		System.out.println("Register data: " + loginForm.getUsername()
-							+ " " + loginForm.getPassword());
-		/*
-		try {
-			AppUser user = anyTypeUserService.getUserInstance(loginForm.getUsername(), loginForm.getPassword());
-			if(user == null) {
-				redirectAttr.addFlashAttribute("message_redirect", Message.LOGINATION_ERR);
-				return "redirect:/home";
-			}
-			
-		} catch(ServiceException exception) {
-			model.addAttribute("message", Message.USER_SERV_ERR);
-		} 
-		
-		
-		redirectAttr.addFlashAttribute("message_redirect", "Login is success!");
-		//model.addAttribute("message_redirect", "Login is success!");
-		return "redirect:/home";
-	} */
 
 }

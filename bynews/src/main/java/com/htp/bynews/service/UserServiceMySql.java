@@ -34,13 +34,12 @@ public class UserServiceMySql implements UserService {
 								user.getEmail() + "\" email already exists");
 		}
 		
-		//TODO not null fields and save
 		user.setStatus("active");
 		user.setPwd_comment(user.getPassword());
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		// Set role for new user:
 		List<Role> listRoles = new ArrayList<>();
 		listRoles.add(new Role(1, "user"));
-		
 		user.setRole(listRoles);
 		
 		try {
@@ -48,9 +47,7 @@ public class UserServiceMySql implements UserService {
 		} catch (DaoException exc) {
 			throw new ServiceException(Message.REGISTR_ERR, exc);
 		}
-		//System.out.println("\nPassword: " + user.getPwd_comment() + " --> " + user.getPassword() + "\n");
-		
-		//System.out.println("\nUser with " + user.getEmail() + " doesn't exist");
+
 		return userExist;
 	}
 

@@ -24,7 +24,7 @@ public class NewsControl {
 	
 	@GetMapping("/read/{id}")
 	public String readNewsPage(@PathVariable("id") int id, Model model) {
-		//
+
 		try {
 			News news = newsService.takeNewsById(id);
 			model.addAttribute("news", news);
@@ -36,6 +36,7 @@ public class NewsControl {
 	
 	@GetMapping("/edit/{id}")
 	public String editNewsPage(@PathVariable("id") int id, Model model) {
+		
 		try {
 			News news = newsService.takeNewsById(id);
 			model.addAttribute("news", news);
@@ -47,6 +48,7 @@ public class NewsControl {
 	
 	@PostMapping("/save")
 	public String saveNews(@ModelAttribute("news") News news, Model model) {
+		
 		try {
 			newsService.editNews(news);
 		} catch(ServiceException exception) {
@@ -57,6 +59,7 @@ public class NewsControl {
 	
 	@GetMapping("/delete/{id}")
 	public String deleteNews(@PathVariable("id") int id, Model model) {
+		
 		try {
 			newsService.deleteNewsById(id);
 		} catch(ServiceException exception) {
@@ -67,17 +70,15 @@ public class NewsControl {
 	
 	@GetMapping("/add")
 	public String addNewsPage(Model model) {
-		// create a news object
+
 		News news = new News();
-		
-		// add loginForm object to the model
 		model.addAttribute("news", news);
-		
 		return "news_add";
 	}
 	
 	@PostMapping("/add")
 	public String saveAddedNews(@ModelAttribute("news") News news, Model model, RedirectAttributes redirectAttr) {
+		
 		int id = -1;
 		try {
 			id = newsService.addNews(news);

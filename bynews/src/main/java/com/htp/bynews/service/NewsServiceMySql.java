@@ -14,7 +14,6 @@ import com.htp.bynews.entity.News;
 @Service
 public class NewsServiceMySql implements NewsService {
 	
-	// need to inject customer dao
 	@Autowired
 	private NewsDao newsDao;
 
@@ -35,7 +34,6 @@ public class NewsServiceMySql implements NewsService {
 				newsIter.remove();
 			}
 		}
-
 		return news;
 	}
 
@@ -108,6 +106,5 @@ public class NewsServiceMySql implements NewsService {
 		
 		return id;
 	}
-	
 
 }

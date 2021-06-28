@@ -24,20 +24,11 @@ public class Start {
 	@GetMapping("start")
 	public String startView(Model model, 
 							@ModelAttribute("redir_msg") String redir_msg) {
-	//public String home(Model model, @ModelAttribute("message_redirect") String message_redir) {
-		
-		//System.out.println("\nMessage from redirect --> " + redir_msg + "\n");
 		
 		try {
-			// get customers from the service
 			List<News> news = newsService.takeAll();
-						
-			// add the customers to the model
 			model.addAttribute("news", news);
-			//model.addAttribute("message", message_redir);
-		
 		} catch (ServiceException exception) {
-			// message
 			model.addAttribute("message", Message.NEWS_SERV_ERR);
 		}
 		

@@ -1,6 +1,5 @@
 package com.htp.bynews.service;
 
-import com.htp.bynews.dao.DaoException;
 import com.htp.bynews.entity.AppUser;
 
 public interface UserService {
