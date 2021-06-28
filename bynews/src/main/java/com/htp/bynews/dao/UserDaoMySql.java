@@ -38,4 +38,15 @@ public class UserDaoMySql implements UserDao {
 		return appUser;
 	}
 
+	@Override
+	public AppUser saveNewUser(AppUser user) throws DaoException {
+		// TODO Auto-generated method stub
+		Session currentSession = sessionFactory.getCurrentSession();
+		currentSession.saveOrUpdate(user);
+		//System.out.println("\nNewUserId = " + user.getId()+ "\n");
+		
+		return user;
+	}
+	
+	
 }

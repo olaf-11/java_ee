@@ -50,6 +50,16 @@
 	<hr>
 	
 	<div class="error-messages">
+		<br>
+			<c:if test="${not empty message}">
+				<br />
+				<h4 class="error-msg_home">${message}</h4>
+			</c:if>
+	
+		<br />
+	</div>
+	
+	<div class="error-messages">
 		<br />
 		
 		<% String error = (String)request.getParameter("error");

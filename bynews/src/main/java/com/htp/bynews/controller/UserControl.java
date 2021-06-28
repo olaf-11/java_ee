@@ -27,8 +27,14 @@ public class UserControl {
 	private UserService userService;
 	
 	@GetMapping("/login")
-	public String showSignInPage(Model model) {
+	public String showSignInPage(Model model, 
+								@ModelAttribute("redir_msg") String redir_msg) {
 				
+		
+		if (redir_msg != null && !redir_msg.trim().isEmpty()) {
+			model.addAttribute("message", redir_msg);
+		}
+		
 		// add loginForm object to the model
 		model.addAttribute("loginForm", new LoginForm());
 		
@@ -77,10 +83,9 @@ public class UserControl {
 			return "sign_up";
 		}
 		
-		// TODO if email exists
-		boolean isAppUser = false;
+		// 
 		try {
-			isAppUser = userService.registerNewUser(appUser);
+			userService.registerNewUser(appUser);
 		} catch (ServiceException serviceExc) {
 			model.addAttribute("message", Message.USER_SERV_ERR);
 			return "sign_up";
@@ -91,7 +96,7 @@ public class UserControl {
 		
 		// TODO a.o.k.
 		redirectAttr.addFlashAttribute("redir_msg", Message.REG_OK_PARAM);
-		return "redirect:/start";
+		return "redirect:/login";
 	}
 	
 	/*

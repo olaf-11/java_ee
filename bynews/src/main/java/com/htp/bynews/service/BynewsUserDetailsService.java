@@ -14,10 +14,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.htp.bynews.dao.DaoException;
 import com.htp.bynews.dao.UserDao;
 import com.htp.bynews.entity.AppUser;
-import com.htp.bynews.entity.NewsPermission;
 import com.htp.bynews.entity.Role;
 
 @Service("userDetailsService")
@@ -30,14 +28,7 @@ public class BynewsUserDetailsService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		
-		AppUser appUser = null;
-		
-		try{
-			appUser = userDao.findUserByEmail(email);
-		} catch (DaoException exc) {
-			throw new UsernameNotFoundException(exc.getLocalizedMessage());
-		}
-		//System.out.println("\n AppUser (from BynewsUserDetailsService): \n" + appUser + "\n");
+		AppUser appUser = userDao.findUserByEmail(email);
 		
 		UserDetails details;
 
