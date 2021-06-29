@@ -26,6 +26,10 @@ public class BynewsSecurityConfig extends WebSecurityConfigurerAdapter{
 				.antMatchers( "/login", "/index", "/logout", 
 						     "/signup", "/resources/**").permitAll()
 				.antMatchers("/", "/start").anonymous()
+				.antMatchers("/news/add").hasAuthority("NEWS_ADD")
+				.antMatchers("/news/read/**").hasAuthority("NEWS_READ")
+				.antMatchers("/news/edit/**").hasAuthority("NEWS_EDIT")
+				.antMatchers("/news/delete/**").hasAuthority("NEWS_DELETE")
 				.anyRequest().authenticated()
 			.and().formLogin()
 				.loginPage("/login")
